@@ -44,3 +44,7 @@ code {
 .name-element {
   color: #5659B4;
 }
+
+img {
+  max-width: 100%;
+}
