@@ -3,17 +3,13 @@ import Cookies from 'universal-cookie';
 
 class CompleteCheck extends React.Component {
   constructor(props) {
-    console.log("Coucou")
-    console.log(props)
 
     super(props);
     this.step = props.step;
-    console.log(this.step)
     const cookies = new Cookies();
     var my_progression = cookies.get('myProgression', { path: '/' });
     this.state = {};
     this.state[this.step] = false;
-    console.log("Step = " + this.state)
 
     if (my_progression !== undefined) {
       this.state = my_progression;
@@ -28,12 +24,9 @@ class CompleteCheck extends React.Component {
     if (my_progression === undefined) {
       my_progression = {}
     }
-    console.log(event.target.checked)
     var step = {}
     step[this.step] = event.target.checked;
     this.setState(step);
-    console.log("New state")
-    console.log(step)
 
     var my_new_progression = { ...my_progression, ...step }
 

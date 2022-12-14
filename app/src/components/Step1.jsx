@@ -1,5 +1,6 @@
 import React from "react";
-import Cookies from 'universal-cookie';
+import StepBase from './StepBase';
+
 import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import image1_0 from './images/bootcamp1.0.png';
@@ -20,34 +21,9 @@ import authorize_github from './images/authorize_github.png'
 import github_signin from './images/github_signin.png'
 import clone_vs from './images/clone_vs.png'
 
-class Step1 extends React.Component {
+class Step1 extends StepBase {
   constructor(props) {
-    super(props);
-    const cookies = new Cookies();
-    var my_progression = cookies.get('myProgression', { path: '/' });
-    this.state = { 'step1': false };
-
-    if (my_progression !== undefined) {
-      this.state = my_progression;
-    }
-
-    this.handleChange = this.handleChange.bind(this);
-  }
-
-  handleChange(event) {
-    const cookies = new Cookies();
-    var my_progression = cookies.get('myProgression', { path: '/' });
-    if (my_progression === undefined) {
-      my_progression = {}
-    }
-    this.setState({ step1: event.target.checked });
-    var step1 = { 'step1': event.target.checked };
-
-    var my_new_progression = { ...my_progression, ...step1 }
-
-    cookies.set('myProgression', my_new_progression, { path: '/' })
-
-    window.location.reload(false);
+    super(props, 'step1');
   }
 
   render() {
@@ -55,7 +31,7 @@ class Step1 extends React.Component {
     const command_line_2 = `Enter file in which to save the key (/c/Users/your.name/.ssh/id_rsa):`
     const command_line_3 = `Enter passphrase (empty for no passphrase):
 Enter same passphrase again:`
-    const command_line_4 = `cd /c/Users/your.name/.ssh/`
+    const command_line_4 = `cd /c/Users/firstname.lastname/.ssh/`
     const command_line_5 = `ls`
     const command_line_6 = `cat id_rsa.pub`
 
@@ -149,7 +125,7 @@ Enter same passphrase again:`
                       <p>The option to clone from a repo should now no longer be greyed out.</p>
                       <p>
                         <span className='name-item-list'>B</span>
-                        The link to access the public repo can be accessed at this <a href="https://github.com/hibamoumneh/Bootcamp.git" target="_blank">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
+                        The link to access the public repo can be accessed at this <a href="https://github.com/Sar4D/Bootcamp.git" target="_blank">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
                       </p>                      
                       <p>
                       If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" target="_blank">link</a> and use your CGI email.                      
@@ -164,20 +140,20 @@ Enter same passphrase again:`
                         <span className='name-item-list'>D</span>
                         Now that a fork has been created on your own GitHub account, open the GitBash console by searching ‘GitBash’.                      </p>
                       <p><img src={gitbash_windows} className='image center' alt='Gitbash in VS' /></p>
-                      <p>Type the following command into the GitBash terminal:
+                      <p>To generate an RSA key of size 4096 bits with your email as the comment, type the following command into the GitBash terminal:
                       <SyntaxHighlighter language="bash">
                         {command_line_1}
                       </SyntaxHighlighter>
                       </p>
                       <p>Replace the ‘your.email’ with your own CGI email address, the same used to create the GitHub account.</p>
                       <p>You will then be asked:
-                      <SyntaxHighlighter language="bash">
+                      <SyntaxHighlighter language="text">
                         {command_line_2}
                       </SyntaxHighlighter>
                       </p>
                       <p>Press enter, without entering a file name.</p>
                       <p>You will then be asked:
-                      <SyntaxHighlighter language="bash">
+                      <SyntaxHighlighter language="text">
                         {command_line_3}
                       </SyntaxHighlighter>
                       </p>
@@ -214,7 +190,7 @@ Enter same passphrase again:`
                       <p><img src={clone_repo} className='image center' alt='Clone the repo' /></p>
                       <p>
                         <span className='name-item-list'>F</span>
-                        Back in Visual Studio, press the ‘Clone from repository’ button, select ‘Clone from GitHub’ to be redirected to the following page in your browser.
+                        Back in Visual Studio. From the “source control” tab, press the ‘Clone from repository’ button, select ‘Clone from GitHub’ to be redirected to the following page in your browser.
                       </p>
                       <p><img src={authorize_github} className='image center' alt='Authorize VS to clone Github repo' /></p>
                       <p>Press ‘Continue’, followed by ‘Authorize GitHub’. Retype your password if prompted. GitHub will now connect to Visual Studio and allow the fork to be copied.</p>
