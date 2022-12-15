@@ -7,20 +7,28 @@ class Home extends React.Component {
     super(props);
     const cookies = new Cookies();
     var myName = cookies.get('myName', { path: '/' });
-    this.state = {name: myName};
+    var myIp = cookies.get('myIp', { path: '/' });
+    this.state = { name: myName, ip: myIp, alertClass: "hide" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleChange(event) {
-    this.setState({name: event.target.value});
+    var state = [];
+    state[event.target.name] = event.target.value;
+    this.setState(state);
   }
 
   handleSubmit(event) {
+
+    console.log(event);
     const cookies = new Cookies();
 
+    this.setState({'alertClass': 'info'});
     cookies.set('myName', this.state.name, { path: '/' });
+    cookies.set('myIp', this.state.ip, { path: '/' });
+    
     event.preventDefault();
   }
 
@@ -30,23 +38,26 @@ class Home extends React.Component {
         <div className="row align-items-center my-5">
           <div className="col-lg-5">
             <h1 className="font-weight-light">Home</h1>
+            <p className={this.state.alertClass}>Values have been saved !</p>
             <p>
-              First at all, indicate your name
-            </p> 
-              <form onSubmit={this.handleSubmit}>
-                <fieldset>
-                  <label>
-                    <p>Name</p>
-                    <input type="text" name="name" value={this.state.name} onChange={this.handleChange}/>
-                  </label>
-                </fieldset>
-                <input type="submit" value="Submit"/>
-              </form>
+              First at all, indicate some informations
+            </p>
+            <form onSubmit={this.handleSubmit}>
+              <fieldset>
+                <label>Firstname</label>
+                <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
+              </fieldset>
+              <fieldset>
+                <label>IP of your VM</label>
+                <input type="text" name="ip" value={this.state.ip} onChange={this.handleChange} />
+              </fieldset>
+              <input type="submit" value="Save" />
+            </form>
           </div>
         </div>
       </div>
     </div>
-  );
+    );
   }
 }
 

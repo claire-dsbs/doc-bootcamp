@@ -7,9 +7,29 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+label {
+  padding-right: 1em;
+}
+
+fieldset {
+  padding-bottom: .5em;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.hide {
+  display: none;
+}
+
+.info {
+  color:green;
+}
+
+.lower {
+  case
 }
 
 .bi-check-square-fill {

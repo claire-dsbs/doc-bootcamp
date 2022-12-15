@@ -41,7 +41,7 @@ class Step2 extends StepBase {
                   <ol>
                     <li>Log into your Linux LAB VM
                       <ol type="a">
-                        <li>username: <Name /></li>
+                        <li>username: <Name case="capitalize" /></li>
                         <li>password: bootcamper</li>
                       </ol>
                     </li>

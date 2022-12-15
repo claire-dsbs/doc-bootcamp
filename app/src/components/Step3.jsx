@@ -18,7 +18,6 @@ class Step3 extends StepBase {
             <div className="col-lg-12">
               <h1 className="font-weight-light">3 -	DevOps Lab - Building a CI pipeline for the Web Application</h1>
               <section>
-                <h2>2.0	Set Up</h2>
                 <p>
                   In this exercise, we are going to build the web application and generate a .war file. To do so we will:
                   <ol type="1">
@@ -27,12 +26,13 @@ class Step3 extends StepBase {
                   </ol>
                   <p>
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseSection1A" role="button" aria-expanded="false" aria-controls="collapseSection1A">
-                      Maven
+                      More about Maven
                     </a>
                   </p>
                   <div class="collapse" id="collapseSection1A">
                     <div class="card card-body">
-                      Maven is a project management and comprehension tool that provides developers a complete build lifecycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build lifecycle.
+                      Maven is a project management and comprehension tool that provides developers a complete build lifecycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build lifecycle.<br/>
+                      <a href="https://maven.apache.org/what-is-maven.html" target="_blank">What is Maven?</a>                    
                     </div>
                   </div>
                 </p>
