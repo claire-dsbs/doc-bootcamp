@@ -3,6 +3,7 @@ import StepBase from './StepBase';
 import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Name from './Name';
+import Ip from './Ip';
 
 class Step4 extends StepBase {
   constructor(props) {
@@ -42,7 +43,7 @@ class Step4 extends StepBase {
                         {command_line_1}
                       </SyntaxHighlighter>
                     </li>
-                    <li>Open the browser and access: http://[ your VM IP ]:8050</li>
+                    <li>Open the browser and access: http://<Ip />:8050</li>
                   </ol>
                 </p>
               </section>
