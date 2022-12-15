@@ -29,7 +29,11 @@ code {
 }
 
 .lower {
-  case
+  text-transform: lowercase;
+}
+
+.capitalize {
+  text-transform: capitalize;
 }
 
 .bi-check-square-fill {
