@@ -7,8 +7,9 @@ class Home extends React.Component {
     super(props);
     const cookies = new Cookies();
     var myName = cookies.get('myName', { path: '/' });
-    var myIp = cookies.get('myIp', { path: '/' });
-    this.state = { name: myName, ip: myIp, alertClass: "hide" };
+    var myVmIp = cookies.get('myVmIp', { path: '/' });
+    var myCdIp = cookies.get('myCdIp', { path: '/' });
+    this.state = { name: myName, ip_vm: myVmIp, ip_cd: myCdIp, alertClass: "hide" };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,8 +28,9 @@ class Home extends React.Component {
 
     this.setState({'alertClass': 'info'});
     cookies.set('myName', this.state.name, { path: '/' });
-    cookies.set('myIp', this.state.ip, { path: '/' });
-    
+    cookies.set('myVmIp', this.state.ip_vm, { path: '/' });
+    cookies.set('myCdIp', this.state.ip_cd, { path: '/' });
+
     event.preventDefault();
   }
 
@@ -49,7 +51,11 @@ class Home extends React.Component {
               </fieldset>
               <fieldset>
                 <label>IP of your VM</label>
-                <input type="text" name="ip" value={this.state.ip} onChange={this.handleChange} />
+                <input type="text" name="ip_vm" value={this.state.ip_vm} onChange={this.handleChange} />
+              </fieldset>
+              <fieldset>
+                <label>IP of your CD Server</label>
+                <input type="text" name="ip_cd" value={this.state.ip_cd} onChange={this.handleChange} />
               </fieldset>
               <input type="submit" value="Save" />
             </form>

@@ -65,6 +65,46 @@ class Navigation extends React.Component {
                     {this.isDone("step4")}
                   </NavLink>
                 </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step5 ? "finished" : ""}`} to="/step5" name="step5">
+                    Step 5
+                    {this.isDone("step5")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step6 ? "finished" : ""}`} to="/step6" name="step6">
+                    Step 6
+                    {this.isDone("step6")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step7 ? "finished" : ""}`} to="/step7" name="step7">
+                    Step 7
+                    {this.isDone("step7")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step8 ? "finished" : ""}`} to="/step8" name="step8">
+                    Step 8
+                    {this.isDone("step8")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step9 ? "finished" : ""}`} to="/step9" name="step9">
+                    Step 9
+                    {this.isDone("step9")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className='nav-link' to="/step10" name="step10">
+                    Appendix A
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className='nav-link' to="/step11" name="step11">
+                    Appendix B
+                  </NavLink>
+                </li>
               </ul>
             </div>
           </div>

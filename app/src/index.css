@@ -7,6 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.center {
+  display: block;
+  margin: auto;
+  padding: 1em 0;
+}
+
+.form-check {
+  font-size: x-large;
+  font-weight: bolder;
+}
+
+.input-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
 label {
   padding-right: 1em;
 }
