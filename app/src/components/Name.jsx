@@ -1,15 +1,11 @@
 import React from "react";
-import Cookies from 'universal-cookie';
+import NameBase from './NameBase';
 
-class Name extends React.Component {
+class Name extends NameBase {
   constructor(props) {
     super(props);
     this.app_name = props.app_name;
     this.class_case = props.case;
-    const cookies = new Cookies();
-    var myName = cookies.get('myName', { path: '/' });
-    this.state = {name: myName};
-
   }
 
   displayProject() {

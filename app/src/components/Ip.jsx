@@ -12,7 +12,6 @@ class Ip extends React.Component {
   }
 
   render() {
-    console.log(this.state.ip);
     return (
       <span className="ip-user fw-semibold">{this.state.ip}</span>
     );

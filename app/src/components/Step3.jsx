@@ -48,16 +48,16 @@ class Step3 extends StepBase {
 
                   The final output will be a war file that can be deployed on a tomcat server
                   <ol type="1">
-                    <li>From your view click “New Item”</li>
+                    <li>From your view click "New Item"</li>
                     <li>Enter the following details:
                       <p>
                         Enter an item name: <Name />-My-First-Maven-Project<br />
-                        Select “Maven project”<br />
-                        In the “Source Code Management” Section:<br />
+                        Select "Maven project"<br />
+                        In the "Source Code Management" Section:<br />
                         Repository: https://github.com/YourForkFromGithub/Bootcamp.git <br />
                         Branches to build : */master
                       </p>
-                      In the “Build” Section:<br />
+                      In the "Build" Section:<br />
                       Root POM:pom.xml<br />
                       Goals and options: clean install package
                       <p><img src={jenkins_build} className='image center' alt='Menu build in jenkins interface' /></p>

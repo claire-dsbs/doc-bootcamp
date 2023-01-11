@@ -54,8 +54,8 @@ class Step4 extends StepBase {
                 <p>The next step is to create a new job that will not only build, but also deploy the generated .war file
                   <ol type="1">
                     <li>From your view click create a new item with the following information:<br />
-                      <span className='tab'>item name: <Name case="capitalize" />-Deploy_on_Tomcat_Server<br />
-                        Copy from: <Name case="capitalize" />-My-First-Maven-Project
+                      <span className='tab'>item name: <Name case="capitalize" app_name="Deploy_on_Tomcat_Server" /><br />
+                        Copy from: <Name case="capitalize" app_name="My-First-Maven-Project" />
                       </span>
                     </li>
                     <li>2.	In « Source Code Management » Section :
@@ -64,13 +64,13 @@ class Step4 extends StepBase {
                         Branches to build : */master
                       </span>
                     </li>
-                    <li>In “Build Triggers” Section :
+                    <li>In "Build Triggers" Section :
                       <span className='tab'>
                         Poll SCM: * * * * *
                       </span>
                       <span className="notice">(Careful to put a space between each Asterix)</span>
                     </li>
-                    <li>In “Build” Section :
+                    <li>In "Build" Section :
                       <span className='tab'>
                         Root POM: pom.xml<br />
                         Goals and options: clean install package
@@ -79,7 +79,7 @@ class Step4 extends StepBase {
                     <li>
                       <div class='row'>
                         <div class="col">
-                          Navigate to “Post-build Actions” section and input the following:<br />
+                          Navigate to "Post-build Actions" section and input the following:<br />
                           Deploy war/ear to container<br />
                           WAR/EAR files: **/*.war<br />
                           Containers: Tomcat 9.x<br />
@@ -103,7 +103,7 @@ class Step4 extends StepBase {
                   Check the web application on the browser http://<Ip type='Cd' />:8050/webapp/index.jsp
                 </p>
                 <p><img src={first_result} className='image center' alt='The result of your success' /></p>
-                <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" target='_blank'>“Making Changes to the Source Code Section”.</a></p>
+                <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" target='_blank'>"Making Changes to the Source Code Section".</a></p>
               </section>
             </div>
           </div>

@@ -48,7 +48,7 @@ Enter same passphrase again:`
                 </p>
                 <p><img src={image1_0} className='image center' alt='Architecture for the bootcamp' /></p>
                 <p>For the purposes of this lab, only a portion of a typical DevOps pipeline will be replicated in order to show the tasks one might expect as a DevOps developer. Multiple open-source platforms, such as Jenkins and TomCat will be used, as these represent the most used – and in demand – applications which are being used in actuality today by CGI. </p>
-                <p className="fw-semibold">For this section of the lab manual, the left part of the diagram, the ‘Continuous Integration’ section will be setup. The main programs to use and setup in this section will be Visual Studio Code, GitBash and GitHub. </p>
+                <p className="fw-semibold">For this section of the lab manual, the left part of the diagram, the 'Continuous Integration' section will be setup. The main programs to use and setup in this section will be Visual Studio Code, GitBash and GitHub. </p>
               </section>
               <section>
                 <h2>1.1 Download Visual Studio Code</h2>
@@ -75,7 +75,7 @@ Enter same passphrase again:`
                         <span className='name-item-list'>D</span>
                         Finish Installation and Launch
                       </p>
-                      <p>After the following appears on your screen, select ‘Finish’ to launch Visual Studio.</p>
+                      <p>After the following appears on your screen, select 'Finish' to launch Visual Studio.</p>
                       <p><img src={image_vs4} className='image center' alt='Installation of Visual Studio - Last step' /></p>
                       <p>You will be presented with the following screen upon first start-up</p>
                       <p><img src={image_vs5} className='image center' alt='Installation of Visual Studio - Opening window' /></p>
@@ -91,7 +91,7 @@ Enter same passphrase again:`
                     <div className="item-list">
                       <p>
                         <span className='name-item-list'>A</span>
-                        In order to <a href="https://git-scm.com/downloads" target="_blank">link</a> Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the ‘Extensions’ menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
+                        In order to <a href="https://git-scm.com/downloads" target="_blank">link</a> Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the 'Extensions' menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
                       </p>
                       <p>Press download and following the Setup Wizard to download Git on your system.</p>
                       <p><img src={install_extension_vs} className='image center' alt='Installation Visual Studio Extension - Git' /></p>
@@ -100,7 +100,7 @@ Enter same passphrase again:`
                         Press on this link to download Git. Download the version relevant to the OS you are using.                         
                       </p>
                       <p><img src={install_git} className='image center' alt='Installation of Git for Windows' /></p>
-                      <p>You can go through the setup by pressing ‘Next’ on each of the steps. The default options are adequate in the scope of this bootcamp.</p>
+                      <p>You can go through the setup by pressing 'Next' on each of the steps. The default options are adequate in the scope of this bootcamp.</p>
                       <p>After the installation has complete, launch GitBash for the first time. A terminal window similar to the Windows Command Prompt will open. This confirms that GitBash has downloaded properly.</p>
                       <p>
                         <figure>
@@ -132,20 +132,20 @@ Enter same passphrase again:`
                       </p>
                       <p>
                         <span className='name-item-list'>C</span>
-                        After accessing the repo, a ‘fork’ or the repo – essentially a copy, now needs to be made.
+                        After accessing the repo, a 'fork' or the repo – essentially a copy, now needs to be made.
                       </p>
                       <p><img src={install_git} className='image center' alt='Installation of Git for Windows' /></p>
                       <p>In the top left of the GitHub page of the repo is the fork button, press it to make a copy on your account.</p>
                       <p>
                         <span className='name-item-list'>D</span>
-                        Now that a fork has been created on your own GitHub account, open the GitBash console by searching ‘GitBash’.                      </p>
+                        Now that a fork has been created on your own GitHub account, open the GitBash console by searching 'GitBash'.                      </p>
                       <p><img src={gitbash_windows} className='image center' alt='Gitbash in VS' /></p>
                       <p>To generate an RSA key of size 4096 bits with your email as the comment, type the following command into the GitBash terminal:
                       <SyntaxHighlighter language="bash">
                         {command_line_1}
                       </SyntaxHighlighter>
                       </p>
-                      <p>Replace the ‘your.email’ with your own CGI email address, the same used to create the GitHub account.</p>
+                      <p>Replace the 'your.email' with your own CGI email address, the same used to create the GitHub account.</p>
                       <p>You will then be asked:
                       <SyntaxHighlighter language="text">
                         {command_line_2}
@@ -164,13 +164,13 @@ Enter same passphrase again:`
                         {command_line_4}
                       </SyntaxHighlighter>
                       </p>
-                      <p>Replace the ‘your.name’ portion with your own username. If unsure of what your username is, scroll up and locate where GitBash stored your key under <i>“Your identification has been saved in /c/Users/your.name/.ssh/id_rsa”</i></p>
+                      <p>Replace the 'your.name' portion with your own username. If unsure of what your username is, scroll up and locate where GitBash stored your key under <i>"Your identification has been saved in /c/Users/your.name/.ssh/id_rsa"</i></p>
                       <p>Now type in the command:
                       <SyntaxHighlighter language="bash">
                         {command_line_5}
                       </SyntaxHighlighter>
                       </p>
-                      <p>Note the use of the lowercase letter ‘ell’, not a capital I.</p>
+                      <p>Note the use of the lowercase letter 'ell', not a capital I.</p>
                       <p>Two separate files will appear, id_rsa and id_rsa.pub</p>
                       <p>Type in the command:
                       <SyntaxHighlighter language="bash">
@@ -183,30 +183,30 @@ Enter same passphrase again:`
                         Return to GitHub on your browser and locate the settings options in the top right of GitHub.
                       </p>
                       <p><img src={menu_github} className='image center' alt='Menu github' /></p>
-                      <p>Select the option ‘SHH and GPG keys’ in the left of the menu.</p>
+                      <p>Select the option 'SHH and GPG keys' in the left of the menu.</p>
                       <p><img src={add_ssh_key} className='image center' alt='Add ssh key' /></p>
-                      <p>The key must be named in the ‘Title’ section, such as ‘my_private_key’. The key which was copied from the GitBash terminal can now be copied in the ‘Key’ section.</p>
-                      <p>Returning back to the repository the green ‘Code’ button can now be selected and the link through HTTPS copied over by pressing the copy icon.</p>
+                      <p>The key must be named in the 'Title' section, such as 'my_private_key'. The key which was copied from the GitBash terminal can now be copied in the 'Key' section.</p>
+                      <p>Returning back to the repository the green 'Code' button can now be selected and the link through HTTPS copied over by pressing the copy icon.</p>
                       <p><img src={clone_repo} className='image center' alt='Clone the repo' /></p>
                       <p>
                         <span className='name-item-list'>F</span>
-                        Back in Visual Studio. From the “source control” tab, press the ‘Clone from repository’ button, select ‘Clone from GitHub’ to be redirected to the following page in your browser.
+                        Back in Visual Studio. From the "source control" tab, press the 'Clone from repository' button, select 'Clone from GitHub' to be redirected to the following page in your browser.
                       </p>
                       <p><img src={authorize_github} className='image center' alt='Authorize VS to clone Github repo' /></p>
-                      <p>Press ‘Continue’, followed by ‘Authorize GitHub’. Retype your password if prompted. GitHub will now connect to Visual Studio and allow the fork to be copied.</p>
-                      <p>A pop-up will then appear, select ‘Sign in with your browser’.</p>
+                      <p>Press 'Continue', followed by 'Authorize GitHub'. Retype your password if prompted. GitHub will now connect to Visual Studio and allow the fork to be copied.</p>
+                      <p>A pop-up will then appear, select 'Sign in with your browser'.</p>
                       <p><img src={github_signin} className='image center' alt='Github signin page' /></p>
                       <p>Follow the instructions and enter any credentials when prompted. </p>
                       <p>
                         <span className='name-item-list'>G</span>
-                        Before returning to Visual Studio, create a new empty folder on your desktop named ‘Git Repos’. All repos will be saved here when prompted by Visual Studio. 
+                        Before returning to Visual Studio, create a new empty folder on your desktop named 'Git Repos'. All repos will be saved here when prompted by Visual Studio. 
                       </p>
                       <p>
                         <span className='name-item-list'>H</span>
-                        Returning to Visual Studio, the ‘Source Control’ option can be selected on the left-hand menu. The ‘Views and more options’ button can be selected (the ellipsis) and finally the clone option.
+                        Returning to Visual Studio, the 'Source Control' option can be selected on the left-hand menu. The 'Views and more options' button can be selected (the ellipsis) and finally the clone option.
                       </p>
                       <p><img src={clone_vs} className='image center' alt='Clone from VS' /></p>
-                      <p>The URL copied from Github can now be pasted in the dialogue box at the top of Visual Studio. The location where the repo will be saved is the ‘Git Repos’ folder created on the desktop for ease of access.</p>
+                      <p>The URL copied from Github can now be pasted in the dialogue box at the top of Visual Studio. The location where the repo will be saved is the 'Git Repos' folder created on the desktop for ease of access.</p>
                     </div>
                   </section>
                 </p>

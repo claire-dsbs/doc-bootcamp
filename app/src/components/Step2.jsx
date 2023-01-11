@@ -67,7 +67,7 @@ class Step2 extends StepBase {
                       From the Jenkins Dashboard click on your view
                     </li>
                     <li>
-                      From your dashboard click on “New Item”
+                      From your dashboard click on "New Item"
                       <p><img src={menu_jenkins} className='image center' alt='Create a new item in Jenkins' /></p>
                     </li>
                     <li>
@@ -77,10 +77,10 @@ class Step2 extends StepBase {
                 </p>
                 <p>
                   Enter an item name: <Name app_name="My-First-Project" /><br />
-                  Select “Freestyle Project”
+                  Select "Freestyle Project"
                 </p>
                 <p><img src={interface_jenkins} className='image center' alt='Create a new project in Jenkins' /></p>
-                <p>Select “Build”  {'>'} “Add Build step” {'>'} “Execute shell” <br />
+                <p>Select "Build"  {'>'} "Add Build step" {'>'} "Execute shell" <br />
                   In the space enter the following command
                 </p>
                 <p><SyntaxHighlighter language="bash">
@@ -88,9 +88,9 @@ class Step2 extends StepBase {
                 </SyntaxHighlighter></p>
                 <p><img src={create_build} className='image center' alt='Create a build in Jenkins' /></p>
                 <p>Save your job</p>
-                <p> Run your job going back to dashboard by selecting the arrow next to the project name and clicking “build now”</p>
+                <p> Run your job going back to dashboard by selecting the arrow next to the project name and clicking "build now"</p>
                 <p><img src={status_jenkins} className='image center' alt='Verify status in Jenkins' /></p>
-                <p>To ensure proper build, check the “console output"</p>
+                <p>To ensure proper build, check the "console output"</p>
                 <p> To do this, go to Build History, then select the terminal icon to the right of the project name.</p>
                 <p><img src={look_history} className='image center' alt='Look build history in Jenkins' /></p>
               </section>

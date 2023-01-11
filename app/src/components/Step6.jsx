@@ -3,6 +3,8 @@ import StepBase from './StepBase';
 import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Name from './Name';
+import NameBase from './NameBase';
+import ReactDOMServer from 'react-dom/server';
 import Ip from './Ip';
 import ansible from './images/ansible.png';
 import example_hosts_file from './images/example_hosts_file.png';
@@ -16,41 +18,43 @@ class Step6 extends StepBase {
   }
 
   render() {
-    const code_1 = 'sudo mkdir /opt/docker/' + <Name type="lower" />
+    const name = ReactDOMServer.renderToString(<NameBase />);
 
-    const code_2 = 'cd /opt/docker/' + <Name type="lower" /> + '/nvi Dockerfile';
+    const code_1 = 'sudo mkdir /opt/docker/' + name.toLowerCase()
+
+    const code_2 = 'cd /opt/docker/' + name.toLowerCase() + '/nvi Dockerfile';
 
     const code_3 = '# Pull tomcat latest image from dockerhub\n \
     From tomcat\n \
     # Maintainer\n \
-    MAINTAINER "' + <Name type="capitalize" /> + '"\n\n \
+    MAINTAINER "' + name + '"\n\n \
     # copy war file on to container\n \
     COPY ./webapp.war /usr/local/tomcat/webapps';
 
-    const code_4 = '- hosts: all\n \
- become: true\n \
- vars:\n \
-    ansible_sudo_pass: “{{ ansible_ssh_pass }}”\n \
- tasks:\n\
-    - name: copy war\n \
-      copy:\n\
-        src: /var/lib/jenkins/workspace/YOURNAME-DeployOnContainer/webapp/target/webapp.war\n\
-        dest: /opt/docker/ YOURNAME\n\
-    - name: Stop current container\n\
-      command: docker stop YOURNAME -devops-container\n\
-      ignore_errors: yes\n\
-    - name: remove stopped container\n\
-      command: docker rm YOURNAME -devops-container\n\
-      ignore_errors: yes\n\
-    - name: remover docker images # Clean up\n\
-      command: docker rmi YOURNAME -devops-image:latest\n\
-      ignore_errors: yes # May not find image if first run\n\
-    - name: create docker image using war file\n\
-      command: docker build -t YOURNAME -devops-image:latest .\n\
+    const code_4 = `- hosts: all
+ become: true
+ vars:
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+ tasks:
+    - name: copy war
+      copy:
+        src: /var/lib/jenkins/workspace/` + name +`-DeployOnContainer/webapp/target/webapp.war
+        dest: /opt/docker/ ` + name +`
+    - name: Stop current container
+      command: docker stop ` + name +`-devops-container
+      ignore_errors: yes
+    - name: remove stopped container
+      command: docker rm ` + name +`-devops-container
+      ignore_errors: yes
+    - name: remover docker images # Clean up
+      command: docker rmi ` + name +`-devops-image:latest
+      ignore_errors: yes # May not find image if first run
+    - name: create docker image using war file
+      command: docker build -t ` + name +`-devops-image:latest .
       args:\n\
-        chdir: /opt/docker/ YOURNAME\n\
-    - name: run container\n\
-      command: docker run -d --name YOURNAME -devops-container -p 8081:8080 -devops-image:latest';
+        chdir: /opt/docker/ ` + name +`
+    - name: run container
+      command: docker run -d --name ` + name +` -devops-container -p 8081:8080 -devops-image:latest`;
 
     return (
       <div className="page">
@@ -136,8 +140,8 @@ class Step6 extends StepBase {
                       Build Environment – Post Steps</li>
                     <li>Add post-build steps -&gt; Invoke Ansible Playbook
                       <ol type="a">
-                        <li>Playbook path = ./ansible-playbook.yml (chemin du playbook dans le repo Git)</li>
-                        <li>Inventory -&gt; File or host list -&gt; ./hosts (chemin du fichier hosts dans le repo Git)</li>
+                        <li>Playbook path = ./ansible-playbook.yml (path of the playbook in the Git repo)</li>
+                        <li>Inventory -&gt; File or host list -&gt; ./hosts (path of the hosts file in the Git repo)</li>
                         <li>Credentials -&gt; bootcamper</li>
                         <li>Leave other parameters empty</li>
                       </ol>
@@ -155,7 +159,7 @@ class Step6 extends StepBase {
                 <p>
                   <img src={result_6} className='image center' alt='Your expected result' />
                   Check the web application on the browser http://<Ip type="Cd" />:8081/webapp/index.jsp<br />
-                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://support.google.com/drive/answer/6283888#heading=h.y8bxtfxbubdo" target="_blank">“Making Changes to the Source Code Section”.</a>
+                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://support.google.com/drive/answer/6283888#heading=h.y8bxtfxbubdo" target="_blank">"Making Changes to the Source Code Section".</a>
 
                 </p>
               </section>
