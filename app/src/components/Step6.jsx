@@ -59,10 +59,15 @@ class Step6 extends StepBase {
             <div className="col-lg-12">
               <h1 className="font-weight-light">6 -	DevOps Lab - Deploy App on Docker Container Using Ansible</h1>
               <section>
-                <p><img src={ansible} className='image left' alt='Ansible schema' />
-                  Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments or zero downtime rolling updates. Ansible’s main goals are simplicity and ease-of-use.<br />
-                  More documentation on Ansible <a href="https://docs.ansible.com/" target="_blank">here</a>
-                </p>
+                <div className="row">
+                  <div className="col">
+                    <img src={ansible} className='image left' alt='Ansible schema' />
+                  </div>
+                  <div className="col center">
+                    Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments or zero downtime rolling updates. Ansible’s main goals are simplicity and ease-of-use.<br />
+                    More documentation on Ansible <a href="https://docs.ansible.com/" target="_blank">here</a>
+                  </div>
+                </div>
               </section>
               <section>
                 <h2>6.0 Set Up</h2>

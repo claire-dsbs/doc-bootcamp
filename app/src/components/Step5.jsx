@@ -12,23 +12,25 @@ import post_build_5 from './images/post_build_5.png';
 import error_5 from './images/error_5.png';
 import result_5 from './images/result_5.png';
 
+const name = <Name case="capitalize" />;
+
 class Step5 extends StepBase {
   constructor(props) {
     super(props, 'step5');
   }
-
+                                        
   render() {
     const command_line_1 = `docker --version`;
     const command_line_2 = `service docker status`;
     const command_line_3 = `docker run -d --name test-tomcat-server -p 8081:8080 tomcat:latest`;
     const command_line_4 = `docker stop test-tomcat-server\ndocker rm test-tomcat-server`;
     const command_line_5 = `cd /home/bootcamper\nvi Dockerfile`;
-    const command_line_6 = '# Pull tomcat latest image from dockerhub\n \
-    From tomcat\n \
-    # Maintainer\n \
-    MAINTAINER "' + <Name case="capitalize" /> + '"\n\n \
-    # copy war file onto container\n \
-     COPY ./webapp.war /usr/local/tomcat/webapps';
+    const command_line_6 = '# Pull tomcat latest image from dockerhub\n\
+From tomcat\n\
+# Maintainer\n\
+MAINTAINER "' + <Name case="capitalize" /> + '"\n\n\
+# copy war file onto container\n\
+COPY ./webapp.war /usr/local/tomcat/webapps';
 
     const command_line_7 = 'docker build -t simple-devops-image';
     const command_line_8 = 'docker run -d --name simple-devops-container -p 8081:8080 simple-devops-image';
@@ -49,9 +51,14 @@ class Step5 extends StepBase {
             <div className="col-lg-12">
               <h1 className="font-weight-light">5 -	DevOps Lab - Deploy App on Docker container</h1>
               <section>
-                <p><img src={docker_logo} className='image left' alt='Logo of Docker' />
-                  Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
-                </p>
+                <div className="row">
+                  <div className="col">
+                    <img src={docker_logo} className='image center' alt='Logo of Docker' />
+                  </div>
+                  <div className="col center">
+                    Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker’s methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
+                  </div>
+                </div>
               </section>
               <section>
                 <h2>5.0 Set Up</h2>
@@ -96,7 +103,7 @@ class Step5 extends StepBase {
                       </SyntaxHighlighter>
                     </li>
                   </ol>
-                  NOTE - For more Docker commands, check out <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.l1wc0mg2ind4" target="_blank">“Appendix”</a> section at the end of the document
+                  NOTE - For more Docker commands, check out <a href="/step10" target="_blank">“Appendix”</a> section at the end of the document
                 </p>
                 <h3>5.0.3	Creating the Docker File</h3>
                 <p>
@@ -187,11 +194,11 @@ class Step5 extends StepBase {
               <section>
                 <h2>5.2	Expected Output</h2>
                 <p>
-                Check the web application on the browser: http://<Ip type='Cd' />:8081/webapp/index.jsp
-                <img src={result_5} className='image center' alt='The result you should have' />
-                To see that Jenkins will automatically deploy changes to the application, follow the instructions in Section 10 of this document ‘Making Changes to the Source Code’.
+                  Check the web application on the browser: http://<Ip type='Cd' />:8081/webapp/index.jsp
+                  <img src={result_5} className='image center' alt='The result you should have' />
+                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in Section 10 of this document ‘Making Changes to the Source Code’.
                 </p>
-                </section>
+              </section>
             </div>
           </div>
           <CompleteCheck step="step5" />

@@ -6,6 +6,7 @@ import image_90_1 from './images/image_90_1.png';
 import image_90_2 from './images/image_90_2.png';
 import image_90_3 from './images/image_90_3.png';
 import image_90_4 from './images/image_90_4.png';
+import image_90_5 from './images/image_90_5.png';
 
 class Step9 extends StepBase {
   constructor(props) {

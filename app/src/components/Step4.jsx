@@ -77,13 +77,19 @@ class Step4 extends StepBase {
                       </span>
                     </li>
                     <li>
-                      Navigate to “Post-build Actions” section and input the following:<br />
-                      Deploy war/ear to container<br />
-                      WAR/EAR files: **/*.war<br />
-                      Containers: Tomcat 9.x<br />
-                      Credentials: deployer (user created already)<br />
-                      Tomcat URL: http://<Ip type="Cd" />:8050
-                      <p><img src={post_build} className='image center' alt='Screen for the post build' /></p>
+                      <div class='row'>
+                        <div class="col">
+                          Navigate to “Post-build Actions” section and input the following:<br />
+                          Deploy war/ear to container<br />
+                          WAR/EAR files: **/*.war<br />
+                          Containers: Tomcat 9.x<br />
+                          Credentials: deployer (user created already)<br />
+                          Tomcat URL: http://<Ip type="Cd" />:8050
+                        </div>
+                        <div class="col">
+                          <img src={post_build} className='image' alt='Screen for the post build' />
+                        </div>
+                      </div>
                     </li>
                     <li>
                       Save and run the job now.
@@ -94,11 +100,11 @@ class Step4 extends StepBase {
               <section>
                 <h2>4.2	Expected Output</h2>
                 <p>
-                Check the web application on the browser http://<Ip type='Cd' />:8050/webapp/index.jsp
+                  Check the web application on the browser http://<Ip type='Cd' />:8050/webapp/index.jsp
                 </p>
                 <p><img src={first_result} className='image center' alt='The result of your success' /></p>
                 <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" target='_blank'>“Making Changes to the Source Code Section”.</a></p>
-                </section>
+              </section>
             </div>
           </div>
           <CompleteCheck step="step4" />
