@@ -57,7 +57,7 @@ Enter same passphrase again:`
                     <div className="item-list">
                       <p>
                         <span className='name-item-list'>A</span>
-                        Head over to this <a href="https://code.visualstudio.com/Download" target="_blank">link</a>. This link will redirect to the Visual Studio Code main download page.
+                        Head over to this <a href="https://code.visualstudio.com/Download" rel="noreferrer">link</a>. This link will redirect to the Visual Studio Code main download page.
                       </p>
                       <p>
                         <span className='name-item-list'>B</span>
@@ -91,7 +91,7 @@ Enter same passphrase again:`
                     <div className="item-list">
                       <p>
                         <span className='name-item-list'>A</span>
-                        In order to <a href="https://git-scm.com/downloads" target="_blank">link</a> Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the 'Extensions' menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
+                        In order to <a href="https://git-scm.com/downloads" rel="noreferrer">link</a> Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the 'Extensions' menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
                       </p>
                       <p>Press download and following the Setup Wizard to download Git on your system.</p>
                       <p><img src={install_extension_vs} className='image center' alt='Installation Visual Studio Extension - Git' /></p>
@@ -125,10 +125,10 @@ Enter same passphrase again:`
                       <p>The option to clone from a repo should now no longer be greyed out.</p>
                       <p>
                         <span className='name-item-list'>B</span>
-                        The link to access the public repo can be accessed at this <a href="https://github.com/Sar4D/Bootcamp.git" target="_blank">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
+                        The link to access the public repo can be accessed at this <a href="https://github.com/Sar4D/Bootcamp.git" rel="noreferrer">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
                       </p>                      
                       <p>
-                      If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" target="_blank">link</a> and use your CGI email.                      
+                      If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" rel="noreferrer">link</a> and use your CGI email.                      
                       </p>
                       <p>
                         <span className='name-item-list'>C</span>

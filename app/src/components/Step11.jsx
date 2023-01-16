@@ -1,7 +1,5 @@
 import React from "react";
 import StepBase from './StepBase';
-import CompleteCheck from './CompleteCheck';
-import SyntaxHighlighter from 'react-syntax-highlighter';
 
 class Step11 extends StepBase {
   constructor(props) {
@@ -9,9 +7,6 @@ class Step11 extends StepBase {
   }
 
   render() {
-    const code_1 = 'git config --global http.sslVerify false\n\
-    git config --global user.name "Your Name"\n\
-    git config --global user.email "your.email@cgi.com"';
 
     return (
       <div className="page">
@@ -23,12 +18,12 @@ class Step11 extends StepBase {
                 <h2>A.1	Resources Used</h2>
                 <p>
                   <ul>
-                    <li>(1)	<a href="https://security.cioreview.com/cioviewpoint/security-is-only-as-good-as-your-weakest-link-nid-14901-cid-21.html" target="_blank">Security is Only As Good As Your Weakest Link (cioreview.com)</a></li>
-                    <li>(2) <a href="https://snyk.io/learn/owasp-top-10-vulnerabilities/#:~:text=The%20Latest%20List%20of%20OWASP%20Top%2010%20Vulnerabilities,Logging%20and%20Monitoring%20Failures%2010%20Server-Side%20Request%20Forgery" target="_blank">OWASP Top 10 | OWASP Top 10 Vulnerabilities 2021 | Snyk</a></li>
-                    <li>(3) <a href="https://www.ibm.com/cloud/learn/devops-a-complete-guide" target="_blank">What is DevOps? | IBM</a></li>
-                    <li>(4) <a href="https://www.ibm.com/cloud/learn/continuous-integration" target="_blank">Continuous Integration | IBM</a></li>
-                    <li>(5) <a href="https://www.ibm.com/cloud/learn/continuous-delivery" target="_blank">Introduction to Continuous Delivery | IBM</a></li>
-                    <li>(6) <a href="https://www.ibm.com/cloud/learn/continuous-integration" target="_blank">Continuous Integration | IBM</a></li>
+                    <li>(1)	<a href="https://security.cioreview.com/cioviewpoint/security-is-only-as-good-as-your-weakest-link-nid-14901-cid-21.html" rel="noreferrer">Security is Only As Good As Your Weakest Link (cioreview.com)</a></li>
+                    <li>(2) <a href="https://snyk.io/learn/owasp-top-10-vulnerabilities/#:~:text=The%20Latest%20List%20of%20OWASP%20Top%2010%20Vulnerabilities,Logging%20and%20Monitoring%20Failures%2010%20Server-Side%20Request%20Forgery" rel="noreferrer">OWASP Top 10 | OWASP Top 10 Vulnerabilities 2021 | Snyk</a></li>
+                    <li>(3) <a href="https://www.ibm.com/cloud/learn/devops-a-complete-guide" rel="noreferrer">What is DevOps? | IBM</a></li>
+                    <li>(4) <a href="https://www.ibm.com/cloud/learn/continuous-integration" rel="noreferrer">Continuous Integration | IBM</a></li>
+                    <li>(5) <a href="https://www.ibm.com/cloud/learn/continuous-delivery" rel="noreferrer">Introduction to Continuous Delivery | IBM</a></li>
+                    <li>(6) <a href="https://www.ibm.com/cloud/learn/continuous-integration" rel="noreferrer">Continuous Integration | IBM</a></li>
                   </ul>
                 </p>
               </section>

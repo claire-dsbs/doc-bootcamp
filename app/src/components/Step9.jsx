@@ -14,9 +14,9 @@ class Step9 extends StepBase {
   }
 
   render() {
-    const code_1 = 'git config --global http.sslVerify false\n\
-    git config --global user.name "Your Name"\n\
-    git config --global user.email "your.email@cgi.com"';
+    const code_1 = `git config --global http.sslVerify false
+git config --global user.name "Your Name"
+git config --global user.email "your.email@cgi.com"`;
 
     return (
       <div className="page">

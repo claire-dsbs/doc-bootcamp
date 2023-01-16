@@ -9,6 +9,10 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
+COPY ./app/public ./public/
+COPY ./app/src ./src/
+COPY ./README.md ./
+RUN npm install -g npm@9.3.0
 RUN npm install --silent
 
 EXPOSE 3000

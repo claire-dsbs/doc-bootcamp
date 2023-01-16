@@ -103,7 +103,7 @@ class Step4 extends StepBase {
                   Check the web application on the browser http://<Ip type='Cd' />:8050/webapp/index.jsp
                 </p>
                 <p><img src={first_result} className='image center' alt='The result of your success' /></p>
-                <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" target='_blank'>"Making Changes to the Source Code Section".</a></p>
+                <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" rel="noreferrer">"Making Changes to the Source Code Section".</a></p>
               </section>
             </div>
           </div>

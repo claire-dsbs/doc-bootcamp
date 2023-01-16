@@ -32,7 +32,7 @@ class Step3 extends StepBase {
                   <div class="collapse" id="collapseSection1A">
                     <div class="card card-body">
                       Maven is a project management and comprehension tool that provides developers a complete build lifecycle framework. Development team can automate the project's build infrastructure in almost no time as Maven uses a standard directory layout and a default build lifecycle.<br/>
-                      <a href="https://maven.apache.org/what-is-maven.html" target="_blank">What is Maven?</a>                    
+                      <a href="https://maven.apache.org/what-is-maven.html" rel="noreferrer">What is Maven?</a>                    
                     </div>
                   </div>
                 </p>

@@ -31,43 +31,43 @@ class Step7 extends StepBase {
   }
 
   render() {
-    const code_1 = '---\n\
-- hosts: all\n\
-  become: true\n\
-  vars:\n\
-    ansible_sudo_pass: "{{ ansible_ssh_pass }}"\n\
-  tasks:\n\
-  - name: copy Dockerfile\n\
-    copy:\n\
-      src: /var/lib/jenkins/workspace/YOUR_INFO_HERE/Dockerfile\n\
-      dest: /opt/docker\n\
-  - name: copy war\n\
-    copy:\n\
-      src: /var/lib/jenkins/workspace/YOUR_INFO_HERE/target/bootcamp.war\n\
-      dest: /opt/docker\n\
-  - name: Stop current container\n\
-    command: docker stop YOUR_INFO_HERE\n\
-    ignore_errors: yes #why do you think is here?\n\
-  - name: remove stopped container\n\
-    command: docker rm YOUR_INFO_HERE\n\
-    ignore_errors: yes\n\
-  - name: remover docker images # Clean up task\n\
-    command: docker rmi YOUR_INFO_HERE:latest\n\
-    ignore_errors: yes # May not find image if first run\n\
-  - name: create docker image using war file\n\
-    command: docker build -t YOUR_INFO_HERE .\n\
-    args:\n\
-      chdir: /opt/docker\n\
-  - name: run container\n\
-    command: docker run -d --name YOUR_INFO_HERE -p 8082:8080 YOUR_INFO_HERE';
+    const code_1 = `---
+- hosts: all
+  become: true
+  vars:
+    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+  tasks:
+  - name: copy Dockerfile
+    copy:
+      src: /var/lib/jenkins/workspace/YOUR_INFO_HERE/Dockerfile
+      dest: /opt/docker
+  - name: copy war
+    copy:
+      src: /var/lib/jenkins/workspace/YOUR_INFO_HERE/target/bootcamp.war
+      dest: /opt/docker
+  - name: Stop current container
+    command: docker stop YOUR_INFO_HERE
+    ignore_errors: yes #why do you think is here?
+  - name: remove stopped container
+    command: docker rm YOUR_INFO_HERE
+    ignore_errors: yes
+  - name: remover docker images # Clean up task
+    command: docker rmi YOUR_INFO_HERE:latest
+    ignore_errors: yes # May not find image if first run
+  - name: create docker image using war file
+    command: docker build -t YOUR_INFO_HERE .
+    args:
+      chdir: /opt/docker
+  - name: run container
+    command: docker run -d --name YOUR_INFO_HERE -p 8082:8080 YOUR_INFO_HERE`;
 
-    const code_2 = 'sonar.projectKey=<your_sonarqube_project_key>\n\
-sonar.host.url=http://10.19.2.4:9000/\n\
-sonar.sources=.\n\
-sonar.java.binaries=target/*\n\
-sonar.dependencyCheck.summarize=true\n\
-sonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html\n\
-sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json';
+    const code_2 = `sonar.projectKey=<your_sonarqube_project_key>
+sonar.host.url=http://10.19.2.4:9000/
+sonar.sources=.
+sonar.java.binaries=target/*
+sonar.dependencyCheck.summarize=true
+sonar.dependencyCheck.htmlReportPath=target/dependency-check-report.html
+sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
     return (
       <div className="page">
         <div className="container">

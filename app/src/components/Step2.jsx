@@ -18,16 +18,7 @@ class Step2 extends StepBase {
   render() {
 
     const command_line_1 = `echo "Welcome to Jenkins Demo"`;
-
-    const code_python = `
-    def get_datas_api(datas, token, language):\n 
-    preset = os.environ["PRESET"]\n 
-    url = f"test/entries?sync=true&sync-preset=test&limit=100&token=" + token\n 
-
-    response = requests.get(url)\n 
-
-    if (response.status_code == 200):\n
-    return "0"`;
+    
     return (
       <div className="page">
         <div className="container">

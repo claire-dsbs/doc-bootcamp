@@ -19,7 +19,7 @@ class StepBase extends React.Component {
     handleChange(event) {
         const cookies = new Cookies();
         var my_progression = cookies.get('myProgression', { path: '/' });
-        if (my_progression == undefined) {
+        if (my_progression === undefined) {
             my_progression = {}
         }
 

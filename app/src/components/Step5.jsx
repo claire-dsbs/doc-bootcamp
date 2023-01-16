@@ -46,8 +46,8 @@ ls`;
 cd /home/bootcamper
 docker build -t simple_devops-image .
 docker run -d --name simple-devops-container -p 8081:8080 simple-devops-image`;
-    const command_line_11 = 'docker stop name_of_container\n\
-docker rm name_of_container';
+    const command_line_11 = `docker stop name_of_container
+docker rm name_of_container`;
 
     return (
       <div className="page">
@@ -108,7 +108,7 @@ docker rm name_of_container';
                       </SyntaxHighlighter>
                     </li>
                   </ol>
-                  NOTE - For more Docker commands, check out <a href="/step10" target="_blank">"Appendix"</a> section at the end of the document
+                  NOTE - For more Docker commands, check out <a href="/step10" rel="noreferrer">"Appendix"</a> section at the end of the document
                 </p>
                 <h3>5.0.3	Creating the Docker File</h3>
                 <p>

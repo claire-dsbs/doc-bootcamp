@@ -24,12 +24,12 @@ class Step6 extends StepBase {
 
     const code_2 = 'cd /opt/docker/' + name.toLowerCase() + '/nvi Dockerfile';
 
-    const code_3 = '# Pull tomcat latest image from dockerhub\n \
-    From tomcat\n \
-    # Maintainer\n \
-    MAINTAINER "' + name + '"\n\n \
-    # copy war file on to container\n \
-    COPY ./webapp.war /usr/local/tomcat/webapps';
+    const code_3 = `# Pull tomcat latest image from dockerhub
+    From tomcat
+    # Maintainer
+    MAINTAINER "' + name + '"
+    # copy war file on to container
+    COPY ./webapp.war /usr/local/tomcat/webapps`;
 
     const code_4 = `- hosts: all
  become: true
@@ -69,7 +69,7 @@ class Step6 extends StepBase {
                   </div>
                   <div className="col center">
                     Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments or zero downtime rolling updates. Ansible’s main goals are simplicity and ease-of-use.<br />
-                    More documentation on Ansible <a href="https://docs.ansible.com/" target="_blank">here</a>
+                    More documentation on Ansible <a href="https://docs.ansible.com/" rel="noreferrer">here</a>
                   </div>
                 </div>
               </section>
@@ -159,7 +159,7 @@ class Step6 extends StepBase {
                 <p>
                   <img src={result_6} className='image center' alt='Your expected result' />
                   Check the web application on the browser http://<Ip type="Cd" />:8081/webapp/index.jsp<br />
-                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://support.google.com/drive/answer/6283888#heading=h.y8bxtfxbubdo" target="_blank">"Making Changes to the Source Code Section".</a>
+                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://support.google.com/drive/answer/6283888#heading=h.y8bxtfxbubdo" rel="noreferrer">"Making Changes to the Source Code Section".</a>
 
                 </p>
               </section>

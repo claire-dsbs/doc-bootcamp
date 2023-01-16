@@ -25,7 +25,7 @@ class Step8 extends StepBase {
                 <p>
                   <ol type="1">
                     <li>Migrate the Dockerfile to Git and use Ansible to transfer it to the target host</li>
-                    <li>Use <a href="https://docs.ansible.com/ansible/2.9/scenario_guides/guide_docker.html" target="_blank">Docker modules</a> in Ansible to optimize the Ansible code, add conditions instead of ignore_errors</li>
+                    <li>Use <a href="https://docs.ansible.com/ansible/2.9/scenario_guides/guide_docker.html" rel="noreferrer">Docker modules</a> in Ansible to optimize the Ansible code, add conditions instead of ignore_errors</li>
                   </ol>
                 </p>
               </section>
@@ -33,11 +33,11 @@ class Step8 extends StepBase {
                 <h2>8.2	Artifact Repository</h2>
                 <p>
                   <ol type="1">
-                    <li>Install <a href="https://www.jfrog.com/confluence/display/JFROG/Installing+Artifactory#InstallingArtifactory-DockerInstallation" target="_blank">JFROG</a> Artifactory on the CI host</li>
+                    <li>Install <a href="https://www.jfrog.com/confluence/display/JFROG/Installing+Artifactory#InstallingArtifactory-DockerInstallation" rel="noreferrer">JFROG</a> Artifactory on the CI host</li>
                     <li>Log into JFROG and create a maven repository</li>
-                    <li>Install the <a href="https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plug-in" target="_blank">Artifactory Jenkins Plugin</a></li>
+                    <li>Install the <a href="https://www.jfrog.com/confluence/display/JFROG/Jenkins+Artifactory+Plug-in" rel="noreferrer">Artifactory Jenkins Plugin</a></li>
                     <li>Configure the Artifactory server in Jenkins</li>
-                    <li>Add a <a href="https://www.jfrog.com/confluence/display/JFROG/Maven+Builds#MavenBuilds-ConfiguringFreestyleMaven3Projects" target="_blank">Post-Build Action</a> to your Jenkins pipeline to upload the war files to Artifactory</li>
+                    <li>Add a <a href="https://www.jfrog.com/confluence/display/JFROG/Maven+Builds#MavenBuilds-ConfiguringFreestyleMaven3Projects" rel="noreferrer">Post-Build Action</a> to your Jenkins pipeline to upload the war files to Artifactory</li>
                     <li>Download the war files from Artifactory using Ansible and Ansible Vault where appropriate</li>
                   </ol>
                 </p>

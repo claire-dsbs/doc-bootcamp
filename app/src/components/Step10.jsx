@@ -1,6 +1,5 @@
 import React from "react";
 import StepBase from './StepBase';
-import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
 class Step10 extends StepBase {
@@ -9,10 +8,6 @@ class Step10 extends StepBase {
   }
 
   render() {
-    const code_1 = 'git config --global http.sslVerify false\n\
-    git config --global user.name "Your Name"\n\
-    git config --global user.email "your.email@cgi.com"';
-
     return (
       <div className="page">
         <div className="container">
