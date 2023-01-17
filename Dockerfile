@@ -11,11 +11,13 @@ COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
 COPY ./app/public ./public/
 COPY ./app/src ./src/
+COPY ./app/build ./build/
 COPY ./README.md ./
 RUN npm install -g npm@9.3.0
+RUN npm install -g serve
 RUN npm install --silent
 
-EXPOSE 3000
+EXPOSE 8080
 
 # start app
-CMD ["npm", "start"]
+CMD ["serve", "-s", "build", "-l", "8080"]
