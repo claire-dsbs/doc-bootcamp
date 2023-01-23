@@ -12,9 +12,8 @@ COPY ./app/package-lock.json ./
 COPY ./app/public ./public/
 COPY ./app/src ./src/
 COPY ./app/build ./build/
-COPY ./README.md ./
+COPY ./app/README.md ./
 RUN npm install -g npm@9.3
-RUN npm install -g serve
 RUN npm install --silent
 
 EXPOSE 8080
