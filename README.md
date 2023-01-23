@@ -51,6 +51,8 @@ Build the image:
 Push the image:
 `docker push bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
+#### Add the project on Azure
+
 Add a Container Instance. Choose `Azure Container Registry` for source. Choose the register, the image name and the version you want.
 
 For the port, replace the port `80` by the port `8080`.
