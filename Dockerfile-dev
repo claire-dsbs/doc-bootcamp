@@ -9,15 +9,10 @@ ENV PATH /app/node_modules/.bin:$PATH
 # install app dependencies
 COPY ./app/package.json ./
 COPY ./app/package-lock.json ./
-COPY ./app/public ./public/
-COPY ./app/src ./src/
-COPY ./app/build ./build/
-COPY ./README.md ./
 RUN npm install -g npm@9.3
-RUN npm install -g serve
 RUN npm install --silent
 
-EXPOSE 8080
+EXPOSE 3000
 
 # start app
-CMD ["serve", "-s", "build", "-l", "8080"]
+CMD ["npm", "start"]
