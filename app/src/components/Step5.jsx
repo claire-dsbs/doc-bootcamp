@@ -13,6 +13,10 @@ import config_build_5 from './images/config_build_5.png';
 import post_build_5 from './images/post_build_5.png';
 import error_5 from './images/error_5.png';
 import result_5 from './images/result_5.png';
+import tomcat_container from './images/tomcat_container.png'
+import jenkins_container_creds_2 from './images/jenkins_container_creds_2.png'
+import jenkins_container_cmd from './images/jenkins_container_cmd.png'
+import jenkins_container_post_actions from './images/jenkins_container_post_actions.png'
 
 class Step5 extends StepBase {
   constructor(props) {
@@ -22,6 +26,7 @@ class Step5 extends StepBase {
   render() {
 
     const name = ReactDOMServer.renderToString(<NameBase />);
+    const command_line_0 = `sudo su -`;
     const command_line_1 = `docker --version`;
     const command_line_2 = `service docker status`;
     const command_line_3 = `docker run -d --name test-tomcat-server -p 8081:8080 tomcat:latest`;
@@ -37,12 +42,12 @@ MAINTAINER "` + name +  `"
 
 # copy war file onto container
 COPY ./webapp.war /usr/local/tomcat/webapps`;
-    const command_line_7 = 'docker build -t simple-devops-image';
+    const command_line_7 = 'docker build -t simple-devops-image .';
     const command_line_8 = 'docker run -d --name simple-devops-container -p 8081:8080 simple-devops-image';
     const command_line_9 = `docker exec -it <your-container> /bin/bash
-cd webapps
+cd webapp
 ls`;
-    const command_line_10 = `sshpass -p "admjin2837678fy!" scp -o "StrictHostKeyChecking=no" jenkins-admin@10.19.0.5:/var/lib/jenkins/workspace/` + name + `-DeployOnContainer/webapp/target/webapp.war /home/bootcamper
+    const command_line_10 = `sshpass -p "\${USER_PW}" scp -o "StrictHostKeyChecking=no" \${USER_ID}@10.19.0.5:/var/lib/jenkins/workspace/` + name + `-Deploy-on-Container/webapp/target/webapp.war /home/bootcamper;
 cd /home/bootcamper
 docker build -t simple_devops-image .
 docker run -d --name simple-devops-container -p 8081:8080 simple-devops-image`;
@@ -66,21 +71,30 @@ docker rm name_of_container`;
                 </div>
               </section>
               <section>
-                <h2>5.0 Set Up</h2>
+                <h2>5.0 Setup</h2>
                 <p>
-                  For this section we will need to:
+                  In this section, we will:
                   <ol type="1">
-                    <li>Confirm that Docker is installed on</li>
+                    <li>Confirm that Docker is properly installed</li>
                     <li>Validate that Docker is working</li>
-                    <li>Create a Dockerfile that will accept the .war file</li>
-                    <li>Create a Docker ssh</li>
+                    <li>Create a Dockerfile that will take care of the war file</li>
+                    <li>Deploy the app on a container through Jenkins</li>
                   </ol>
                 </p>
-                <h3>5.0.1	Setting Up Docker</h3>
+                <h3>5.1	Setup Docker</h3>
                 <p>
+                  <a href="https://en.wikipedia.org/wiki/Docker_(software)" rel="noreferrer">Docker (software) - Wikipedia</a>
+                </p>
+                <p>
+                  Docker should already be installed on your Lab VM. To make sure that’s the case:
                   <ol type="1">
-                    <li>Log into your LAB VM</li>
-                    <li>Make sure docker is installed and start docker services
+                    <li>Open the Terminal in your Lab VM</li>
+                    <li>Become root
+                      <SyntaxHighlighter language="bash">
+                        {command_line_0}
+                      </SyntaxHighlighter>
+                    </li>
+                    <li>Make sure docker is installed
                       <SyntaxHighlighter language="bash">
                         {command_line_1}
                       </SyntaxHighlighter>
@@ -92,17 +106,17 @@ docker rm name_of_container`;
                     </li>
                   </ol>
                 </p>
-                <h3>5.0.2	Validating Docker</h3>
+                <h3>5.2	Validate Docker</h3>
                 <p>
                   <ol type="1">
-                    <li>Create a tomcat docker container by pulling a docker image from the public docker registry
+                    <li>Create a tomcat docker container by pulling a docker image from the public docker registry. (Here we are mapping the external port 8081 to the default Tomcat 8080 port inside the container)
                       <SyntaxHighlighter language="bash">
                         {command_line_3}
                       </SyntaxHighlighter>
                     </li>
                     <li>Check that the Tomcat server in the Docker container is up: http://<Ip type='Cd' />:8081/
                     </li>
-                    <li>Delete the container so it doesn't trigger an "already use port error" in the future:
+                    <li>Delete the container to prevent future port conflicts:
                       <SyntaxHighlighter language="bash">
                         {command_line_4}
                       </SyntaxHighlighter>
@@ -110,7 +124,10 @@ docker rm name_of_container`;
                   </ol>
                   NOTE - For more Docker commands, check out <a href="/step10" rel="noreferrer">"Appendix"</a> section at the end of the document
                 </p>
-                <h3>5.0.3	Creating the Docker File</h3>
+                <h3>5.3	Create a Dockerfile</h3>
+                <p>
+                  <a href="https://docs.docker.com/engine/reference/builder/" rel="noreferrer">Dockerfile reference | Docker Documentation</a>
+                </p>
                 <p>
                   <ol type="1">
                     <li>Create a file called "Dockerfile" under /home/bootcamper in the user home directory
@@ -135,75 +152,110 @@ docker rm name_of_container`;
                       <SyntaxHighlighter language="bash">
                         {command_line_8}
                       </SyntaxHighlighter>
+                      NOTE: If you get an error saying that the container is already in use, run the commands in 6.b.iii to stop and delete the running container (with the name simple-devops-container).
                     </li>
                     <li>
-                      From the User interface check that tomcat page loads: http://<Ip type='Cd' />:/8081/webapp
+                      Check that the page loads by visiting: http://<Ip type='Cd' />:/8081/webapp
+                      <p><img src={tomcat_container} className='image center' alt='Installation of Git for Windows' /></p>
+                    </li>
+                    <li>
+                      IMPORTANT - now that the Docker container is up, we must destroy it to avoid port conflicts if using port 8081.
                     </li>
                   </ol>
-                  <div className="warning">
-                    IMPORTANT - now that the Docker container is up, we must destroy it to avoid port conflicts if using port 8081. Check out the "Appendix" section at the end of the document for details on the Docker commands to stop and remove an already existing container.
-                  </div>
-                  If the tomcat page doesn't load and shows Not found:  <br />
+                  If the tomcat page doesn't load or shows 'Not found', run:<br />
                   <div>
-                    In /home/bootcamper you can enter:  docker ps -a <br />
-                    If there's more than one container stop and delete them all with their id with : <br />
+                    docker ps -a <br />
+                    If there's more than one container stop and delete them all using their ids with : <br />
                     <SyntaxHighlighter language="bash">
                       {delete_docker}
                     </SyntaxHighlighter>
                     and redo step 1 to 6.<br />
                   </div>
-                  You can verify your image in your container:
+                  You can also verify your image in your container:
                   <SyntaxHighlighter language="bash">
                     {command_line_9}
                   </SyntaxHighlighter>
                 </p>
               </section>
               <section>
-                <h2>5.1 Deploying the Container with Jenkins</h2>
+                <h2>5.4 Deploying a Container with Jenkins</h2>
+                <p>
+                  First of all, to not have any build conflicts when pushing new code to GitHub, make sure to remove the automatic polling in your previous Jenkins job (i.e. <Name case="capitalize" app_name="Deploy-on-Tomcat-Server" />)
+                </p>
                 <p>
                   <ol type="1">
-                    <li>Navigate to Dashboard -> Manage Jenkins -> Configure System
+                    <li>In Jenkins, go to Dashboard {'>'} Manage Jenkins {'>'} Configure System
                       <img src={config_system} className='image center' alt='Config system interface' />
                       Scroll down and add a new SSH remote hosts with the IP of your target with the preconfigured credentials bootcamper
                       <img src={ssh_remote_hosts} className='image center' alt='Configuration of the SSH remote hosts' />
                     </li>
                     <li>
-                      From your view click create a new item with the following information
-                      <div className='tab'>Enter an item name: <Name case="capitalize" app_name="Deploy_on_Container" /><br />
-                        Copy from: <Name case="capitalize" app_name="Deploy_on_Tomcat_Server" /><br />
-                        Source Code Management:<br />
-                        <div className='tab'>Repository: https://github.com/YourForkFromGithub/bootcamp.git<br />
-                          Branches to build : */master
-                          Poll SCM : * * * * *<br />
-                          Build Environment<br />
-                        </div>
-                      </div>
-                      In the "Post Build Section" paste the following code (this will pull the .war file from the Jenkins box to your target box).
+                      From your view, click Create a New Item <Name case="capitalize" app_name="Deploy-on-Container" /> and copy from <Name case="capitalize" app_name="Deploy-on-Tomcat-Server" />
+                    </li>
+                    <li>
+                      In the Source Code Management section, make sure that you still point to */master in the repo https://github.com/YourForkFromGithub/bootcamp.git
+                    </li>
+                    <li>
+                      Set Poll SCM to * * * * *
+                    </li>
+                    <li>
+                      Under build environment, set the following credentials so the can be used in the shell script below without being cleartext:
+                      <img src={jenkins_container_creds_2} className='image center' alt='Config system interface' />
+                    </li>
+                    <li>
+                      In the Post Steps section, click Add post-build step, add Execute shell script on remote host using ssh and paste the following code under Command:
                       <SyntaxHighlighter language="text">
                         {command_line_10}
                       </SyntaxHighlighter>
-                      <img src={config_build_5} className='image center' alt='Configuration of your IP' />
+                      What the code does is that it pulls the image from the Jenkins server (where it's built) into the /home/bootcamper directory, creates a docker image from it and runs it.
+                      <img src={jenkins_container_cmd} className='image center' alt='Config system interface' />
                     </li>
-                    <li>Make sure to delete everything in "Post-build Actions" Section. Press X.
-                      <img src={post_build_5} className='image center' alt='Configuration of your IP' />
-                      <div>
-                        If your build doesn't work. Look at your build console output. It probably shows this:
-                        <img src={error_5} className='image center' alt='Configuration of your IP' />
-                        Then go to your target SSH, and enter these commands with the name of your container:
-                        <SyntaxHighlighter language="bash">
-                          {command_line_11}
-                        </SyntaxHighlighter>
-                      </div>
+                    <li>
+                      Make sure to select your VM IP under SSH Site.
                     </li>
+                    <li>
+                      Also, delete everything under Post-build Actions:
+                      <img src={jenkins_container_post_actions} className='image center' alt='Config system interface' />
+                    </li>
+                    <li>
+                      Save job.
+                    </li>
+                    <div>
+                      If your build doesn't work. Look at your build console output. It probably shows this:
+                      <img src={error_5} className='image center' alt='Configuration of your IP' />
+                      If so, go to your terminal, and enter these commands with the name of your container:
+                      <SyntaxHighlighter language="bash">
+                        {command_line_11}
+                      </SyntaxHighlighter>
+                    </div>
                   </ol>
                 </p>
               </section>
               <section>
-                <h2>5.2	Expected Output</h2>
+                <h2>5.5	Expected Output</h2>
                 <p>
-                  Check the web application on the browser: http://<Ip type='Cd' />:8081/webapp/index.jsp
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type='Cd' />:8081/webapp and see something like the following:
                   <img src={result_5} className='image center' alt='The result you should have' />
-                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in Section 10 of this document 'Making Changes to the Source Code'.
+                </p>
+              </section>
+              <section>
+                <h2>5.6	Making Changes in Source Code</h2>
+                <p>
+                  To make sure Jenkins polling works as expected (i.e. a new build is triggered when changes to the source code are detected), we will make a change and see if it is reflected.
+                  <ol type="1">
+                    <li>
+                      Open the Bootcamp repo on your local computer, and make a change to index.jsp under webapp/src/main/webapp.
+                    </li>
+                    <li>
+                      Commit and push your changes.
+                    </li>
+                    <li>
+                      Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.
+                    </li>
+                    <li>
+                      Finally, go to http://<Ip type='Cd' />:8081/webapp and make sure the new changes are visible on the page.
+                    </li>
+                  </ol>
                 </p>
               </section>
             </div>
