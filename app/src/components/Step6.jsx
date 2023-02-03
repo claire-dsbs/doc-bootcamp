@@ -11,6 +11,8 @@ import example_hosts_file from './images/example_hosts_file.png';
 import post_build_6 from './images/post_build_6.png';
 import error_6 from './images/error_6.png';
 import result_6 from './images/result_6.png';
+import jenkins_container_creds_2 from './images/jenkins_container_creds_2.png'
+import jenkins_ansible from './images/jenkins_ansible.png'
 
 class Step6 extends StepBase {
   constructor(props) {
@@ -22,39 +24,52 @@ class Step6 extends StepBase {
 
     const code_1 = 'sudo mkdir /opt/docker/' + name.toLowerCase()
 
-    const code_2 = 'cd /opt/docker/' + name.toLowerCase() + '/nvi Dockerfile';
+    const code_2 = `cd /opt/docker/` + name.toLowerCase() +
+    `\nvi Dockerfile`;
 
     const code_3 = `# Pull tomcat latest image from dockerhub
-    From tomcat
-    # Maintainer
-    MAINTAINER "' + name + '"
-    # copy war file on to container
-    COPY ./webapp.war /usr/local/tomcat/webapps`;
+From tomcat
+# Maintainer
+MAINTAINER "` + name + `"
+# copy war file on to container
+COPY ./webapp.war /usr/local/tomcat/webapps`;
 
-    const code_4 = `- hosts: all
- become: true
- vars:
-    ansible_sudo_pass: "{{ ansible_ssh_pass }}"
- tasks:
-    - name: copy war
+    const code_4 = `---
+- hosts: all # comes from the hosts file
+  become: true # become sudo
+  gather_facts: false # save time and not gather info
+
+  tasks:
+    - name: set sudo password
+      set_fact:
+        ansible_sudo_pass: "{{ ansible_ssh_pass }}"
+
+    - name: copy war from Jenkins to target host
       copy:
-        src: /var/lib/jenkins/workspace/` + name +`-DeployOnContainer/webapp/target/webapp.war
-        dest: /opt/docker/ ` + name +`
-    - name: Stop current container
-      command: docker stop ` + name +`-devops-container
-      ignore_errors: yes
+        src: /var/lib/jenkins/workspace/` + name.toLowerCase() + `-Deploy-on-Container-using-Ansible/webapp/target/webapp.war
+        dest: /opt/docker/` + name.toLowerCase() + `
+
+    - name: stop current container
+      command: docker stop ` + name.toLowerCase() + `-devops-container
+      ignore_errors: yes # in case container doesn't exist
+
     - name: remove stopped container
-      command: docker rm ` + name +`-devops-container
-      ignore_errors: yes
-    - name: remover docker images # Clean up
-      command: docker rmi ` + name +`-devops-image:latest
-      ignore_errors: yes # May not find image if first run
+      command: docker rm ` + name.toLowerCase() + `-devops-container
+      ignore_errors: yes # in case container doesn't exist
+
+    - name: remove docker images 
+      command: docker rmi ` + name.toLowerCase() + `-devops-image:latest
+      ignore_errors: yes # in case image does not exist
+
     - name: create docker image using war file
-      command: docker build -t ` + name +`-devops-image:latest .
-      args:\n\
-        chdir: /opt/docker/ ` + name +`
-    - name: run container
-      command: docker run -d --name ` + name +` -devops-container -p 8081:8080 -devops-image:latest`;
+      command: docker build -t ` + name.toLowerCase() + `-devops-image:latest .
+      args:
+        chdir: /opt/docker/` + name.toLowerCase() + `
+
+    - name: run container from docker image
+      command: docker run -d --name ` + name.toLowerCase() + `-devops-container -p 8081:8080 ` + name.toLowerCase() + `-devops-image:latest`;
+
+    const code_5 = `export ANSIBLE_HOST_KEY_CHECKING=False\nsshpass -p "\${USER_PW}" ansible-playbook ansible-playbook.yml -i hosts --user=\${USER_ID} -e ansible_ssh_pass=\${USER_PW}`
 
     return (
       <div className="page">
@@ -74,16 +89,15 @@ class Step6 extends StepBase {
                 </div>
               </section>
               <section>
-                <h2>6.0 Set Up</h2>
+                <h2>6.0 Setup</h2>
                 <p>
-                  To complete this section we will need to:
+                  To complete this section, you will:
                   <ol type="1">
-                    <li>Set up your Lab VM directory</li>
-                    <li>Set up the Ansible script</li>
-                    <li>Creating an Ansible inventory file</li>
+                    <li>Setup your Lab VM directory</li>
+                    <li>Write an Ansible script and inventory file which will be used to deploy the application to a container on your VM</li>
                   </ol>
                 </p>
-                <h3>6.0.1 Setting up the Dockerfile</h3>
+                <h3>6.1 Setup Dockerfile</h3>
                 <ol type="1">
                   <li>Log into your Lab VM</li>
                   <li>Create the path /opt/docker/<Name type="lower" />
@@ -102,65 +116,94 @@ class Step6 extends StepBase {
                     </SyntaxHighlighter>
                   </li>
                 </ol>
-                <h3>6.0.2	Setting up the Ansible Script</h3>
+                <h3>6.2	Ansible Playbook</h3>
+                <p>
+                  <a href="https://en.wikipedia.org/wiki/Ansible_(software)" rel="noreferrer">Ansible (software) - Wikipedia</a>
+                </p>
                 <ol type="1">
-                  <li>Ouvrez VS Code sur votre Laptop CGI, créez le fichier ansible_playbook.yml dans le repo Git bootcamp.</li>
-                  <li>Le contenu devrait ressembler à ça:
+                  <li>Open VS Code on your local computer and create a file called ansible-playbook.yml at the root of the Bootcamp repository.</li>
+                  <li>Paste the following contents (make sure it makes sense):
                     <SyntaxHighlighter language="dockerfile">
                       {code_4}
                     </SyntaxHighlighter>
                   </li>
                 </ol>
-                <h3>6.0.3	Creating an Ansible Inventory File</h3>
+                <h3>6.3	Ansible Inventory file</h3>
                 <p>
                   <ol type="1">
-                    <li>In the same git repo, create a file named hosts.</li>
+                    <li>Similarly to the previous step, create a file named hosts (without an extension) and write in it your VM IP.</li>
                     <li>Add your Lab VM IP: <Ip type="Vm" />
                       <img src={example_hosts_file} className='image center' alt='Ansible schema' />
                     </li>
-                    <li>Save the file but don't push right away.</li>
+                    <li>Once done, commit and push everything.</li>
                   </ol>
                 </p>
               </section>
               <section>
-                <h2>6.1	Integrating Ansible and Jenkins</h2>
+                <h2>6.4 Integrate Ansible with Jenkins</h2>
                 <p>
                   <ol type="1">
-                    <li>From your view click create a new item with the following information<br />
-                      Enter an item name: Deploy_on_Container_using_ansible<br />
-                      Copy from: Deploy_on_Container<br />
-                      Source Code Management:<br />
-                      Repository: https://github.com/YOURNAME/bootcamp.git<br />
-                      Branches to build : */master<br />
-                      Poll SCM : - * * * * *<br />
-                      Build:<br />
-                      Root POM:pom.xml<br />
-                      Goals and options: clean install package<br />
-                      <br />
-                      Build Environment – Post Steps</li>
-                    <li>Add post-build steps -&gt; Invoke Ansible Playbook
-                      <ol type="a">
-                        <li>Playbook path = ./ansible-playbook.yml (path of the playbook in the Git repo)</li>
-                        <li>Inventory -&gt; File or host list -&gt; ./hosts (path of the hosts file in the Git repo)</li>
-                        <li>Credentials -&gt; bootcamper</li>
-                        <li>Leave other parameters empty</li>
-                      </ol>
-                      <img src={post_build_6} className='image center' alt='Screen of the post build parameters' />
+                    <li>
+                      First of all, to not have any build conflicts when pushing new code to GitHub, make sure to remove the automatic polling in your previous Jenkins job (i.e. <Name case="capitalize" app_name="Deploy-on-Container" />)</li>
+                    <li>
+                      From your view, click Create a New Item <Name case="capitalize" app_name="Deploy-on-Container-using-Ansible" /> and copy from <Name case="capitalize" app_name="Deploy-on-Container" />
                     </li>
-                    <li>Save your job and push your last changes in Git.</li>
+                    <li>
+                      In the Source Code Management section, make sure that you still point to */master in the repo https://github.com/YourForkFromGithub/bootcamp.git
+                    </li>
+                    <li>
+                      Set Poll SCM to * * * * *
+                    </li>
+                    <li>
+                      In Build triggers, under Use secret text(s) or file(s), modify the specific credentials to bootcamper
+                      <img src={jenkins_container_creds_2} className='image center' alt='Ansible schema' />
+                    </li>
+                    <li>
+                      Remove Execute shell script on remote host using ssh post-build step. 
+                    </li>
+                    <li>
+                      Add Execute shell post-build step and input the following:
+                      <SyntaxHighlighter language="bash">
+                        {code_5}
+                      </SyntaxHighlighter>
+                      <img src={jenkins_ansible} className='image center' alt='Ansible schema' />
+                      This command runs the ansible-playbook.yml file and passes to it the necessary credentials to perform the tasks within the playbook.
+                    </li>
+                    <li>
+                      Save and run job.
+                    </li>
                   </ol>
                   If the build failed because of this error:
                   <img src={error_6} className='image center' alt='Error you can have at the end of this step' />
-                  Make sure to deactivate Poll SCM in your previous build of Deploy_on_Container and Deploy_on_Tomcat_server.
+                  Make sure to deactivate Poll SCM in your previous jobs.
                 </p>
               </section>
               <section>
-                <h2>6.2	Expected Output</h2>
+                <h2>6.5	Expected Output</h2>
                 <p>
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type="Cd" />:8081/webapp and see something like the following:
                   <img src={result_6} className='image center' alt='Your expected result' />
-                  Check the web application on the browser http://<Ip type="Cd" />:8081/webapp/index.jsp<br />
-                  To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://support.google.com/drive/answer/6283888#heading=h.y8bxtfxbubdo" rel="noreferrer">"Making Changes to the Source Code Section".</a>
-
+                  If you get an error regarding container being in use, make sure to stop and delete the container like previously seen.
+                </p>
+              </section>
+              <section>
+                <h2>6.6	Making Changes in Source Code</h2>
+                <p>
+                  To make sure Jenkins polling works as expected (i.e. a new build is triggered when changes to the source code are detected), we will make a change and see if it is reflected.
+                  <ol type="1">
+                    <li>
+                      Open the Bootcamp repo on your local computer, and make a change to index.jsp under webapp/src/main/webapp.
+                    </li>
+                    <li>
+                      Commit and push your changes.
+                    </li>
+                    <li>
+                      Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.
+                    </li>
+                    <li>
+                      Finally, go to http://<Ip type='Cd' />:8081/webapp and make sure the new changes are visible on the page.
+                    </li>
+                  </ol>
                 </p>
               </section>
             </div>

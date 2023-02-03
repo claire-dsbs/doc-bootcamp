@@ -18,11 +18,12 @@ class Step3 extends StepBase {
             <div className="col-lg-12">
               <h1 className="font-weight-light">3 -	DevOps Lab - Building a CI pipeline for the Web Application</h1>
               <section>
+                <h2>3.0	Setup</h2>
                 <p>
                   In this exercise, we are going to build the web application and generate a .war file. To do so we will:
                   <ol type="1">
-                    <li>Integrate Jenkins with Git and Maven</li>
-                    <li>Set up a Jenkins job to create a war file whenever a change is made to the source code</li>
+                    <li>Integrate Jenkins with Git and Maven.</li>
+                    <li>Set up a Jenkins job to build a war file.</li>
                   </ol>
                   <p>
                     <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseSection1A" role="button" aria-expanded="false" aria-controls="collapseSection1A">
@@ -38,27 +39,24 @@ class Step3 extends StepBase {
                 </p>
               </section>
               <section>
-                <h2>3.0	Building the Web app</h2>
+                <h2>3.1	Building the Web app</h2>
                 <p>
-                  The first step is to build the web app using maven. That is, we will instruct Jenkins to
-                  <ol type="1">
-                    <li>pull in the web app source code from the repository,</li>
-                    <li>Create a runnable war file from it.</li>
-                  </ol>
-
-                  The final output will be a war file that can be deployed on a tomcat server
+                  <a href="https://en.wikipedia.org/wiki/Apache_Maven" rel="noreferrer">Apache Maven - Wikipedia</a>
+                </p>
+                <p>
+                  The first step is to build the web app using Maven. That is, we will instruct Jenkins to pull in the web app source code from the repository and to create a runnable war file from it.
                   <ol type="1">
                     <li>From your view click "New Item"</li>
-                    <li>Enter the following details:
+                    <li>Perform the following:
                       <p>
                         Enter an item name: <Name />-My-First-Maven-Project<br />
-                        Select "Maven project"<br />
+                        Select "Maven Project"<br />
                         In the "Source Code Management" Section:<br />
                         Repository: https://github.com/YourForkFromGithub/Bootcamp.git <br />
                         Branches to build : */master
                       </p>
                       In the "Build" Section:<br />
-                      Root POM:pom.xml<br />
+                      Root POM: pom.xml<br />
                       Goals and options: clean install package
                       <p><img src={jenkins_build} className='image center' alt='Menu build in jenkins interface' /></p>
                     </li>
@@ -69,11 +67,10 @@ class Step3 extends StepBase {
                 </p>
               </section>
               <section>
-                <h2>3.1	Expected Output</h2>
-                <p><img src={jenkins_output} className='image center' alt='Output after the build' />
-                  <figcaption>To ensure successful creation of the task, scroll down to the end of the console output, it should read:<br />
-                    Finished: SUCCESS
-                  </figcaption>
+                <h2>3.2	Expected Output</h2>
+                  <p>To ensure successful creation of the task, scroll down to the end of the console output, it should read: Finished: SUCCESS<br/>
+                  </p>
+                  <p><img src={jenkins_output} className='image center' alt='Output after the build' />
                 </p>
 
               </section>

@@ -22,6 +22,7 @@ class Step4 extends StepBase {
             <div className="col-lg-12">
               <h1 className="font-weight-light">4 -	DevOps Lab - Deploying the Web Application</h1>
               <section>
+                <h2>4.0 Setup</h2>
                 <p>
                   In this exercise, we are going to deploy the generated war file on a Tomcat server. To do so we will:
                   <ol type="1">
@@ -30,66 +31,48 @@ class Step4 extends StepBase {
                 </p>
               </section>
               <section>
-                <h2>4.0 Set Up</h2>
-                <h3>4.0.1 Tomcat Server Status Setup</h3>
+                <h2>4.1 Setup Tomcat</h2>
                 <p>
-                  Make sure that the Tomcat server is up:
+                  <a href="https://en.wikipedia.org/wiki/Apache_Tomcat" rel="noreferrer">Apache Tomcat - Wikipedia</a>
+                </p>
+                <p>
+                  Tomcat should already be installed on your Lab VM. To make sure that's the case:
                   <ol type="1">
-                    <li>Log into your Lab VM
-                      <ol type="a">
-                        <li>Username is <Name case="lower" />, all lower case, password is TOBECHANGED</li>
-                      </ol>
+                    <li>
+                      Open the Terminal in your Lab VM.
                     </li>
-                    <li>Access the Terminal and run the following commands (enter your password if prompted)
+                    <li>Run the following commands and enter your password if prompted:
                       <SyntaxHighlighter language="bash">
                         {command_line_1}
                       </SyntaxHighlighter>
                     </li>
-                    <li>Open the browser and access: http://<Ip type="Vm" />:8050</li>
+                    <li>
+                      Open your browser and access http://<Ip type="Vm" />:8050
+                    </li>
                   </ol>
                 </p>
               </section>
               <section>
-                <h2>4.1	Jenkins Deployment Job Set up</h2>
+                <h2>4.2	Setup Jenkins</h2>
                 <p>The next step is to create a new job that will not only build, but also deploy the generated .war file
                   <ol type="1">
                     <li>From your view click create a new item with the following information:<br />
-                      <span className='tab'>item name: <Name case="capitalize" app_name="Deploy_on_Tomcat_Server" /><br />
+                      <span className='tab'>Item name: <Name case="capitalize" app_name="Deploy-on-Tomcat-Server" /><br />
                         Copy from: <Name case="capitalize" app_name="My-First-Maven-Project" />
                       </span>
                     </li>
-                    <li>2.	In « Source Code Management » Section :
-                      <span className='tab'>
-                        Repository: https://github.com/YourForkFromGithub/Bootcamp.git<br />
-                        Branches to build : */master
-                      </span>
-                    </li>
-                    <li>In "Build Triggers" Section :
-                      <span className='tab'>
-                        Poll SCM: * * * * *
-                      </span>
-                      <span className="notice">(Careful to put a space between each Asterix)</span>
-                    </li>
-                    <li>In "Build" Section :
-                      <span className='tab'>
-                        Root POM: pom.xml<br />
-                        Goals and options: clean install package
-                      </span>
-                    </li>
                     <li>
-                      <div class='row'>
-                        <div class="col">
-                          Navigate to "Post-build Actions" section and input the following:<br />
-                          Deploy war/ear to container<br />
-                          WAR/EAR files: **/*.war<br />
-                          Containers: Tomcat 9.x<br />
-                          Credentials: deployer (user created already)<br />
-                          Tomcat URL: http://<Ip type="Cd" />:8050
-                        </div>
-                        <div class="col">
-                          <img src={post_build} className='image' alt='Screen for the post build' />
-                        </div>
-                      </div>
+                      In Build Triggers section, under Poll SCM, put * * * * * (make sure to put spaces between each asterix) and make sure to disable the default “Whenever a SNAPSHOT dependency is build”.
+                    </li>
+                    <p>
+                      <a href="https://blog.knoldus.com/jenkins-build-triggers/" rel="noreferrer">Jenkins: Build Triggers</a>
+                    </p>
+                    <li>
+                      In Post-Build Actions section, select Deploy war/ear to container and input the following:
+                      <ul>**/*.war for WAR/EAR files</ul>
+                      <ul>Tomcat 9.x for Containers</ul>
+                      <ul>Your credentials for Credentials</ul>
+                      <ul>http://<Ip type="Vm" />:8050 for Tomcat URL</ul>
                     </li>
                     <li>
                       Save and run the job now.
@@ -98,12 +81,31 @@ class Step4 extends StepBase {
                 </p>
               </section>
               <section>
-                <h2>4.2	Expected Output</h2>
+                <h2>4.3	Expected Output</h2>
                 <p>
-                  Check the web application on the browser http://<Ip type='Cd' />:8050/webapp/index.jsp
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type='Cd' />:8050/webapp/index.jsp and see something like the following:
                 </p>
                 <p><img src={first_result} className='image center' alt='The result of your success' /></p>
-                <p>To see that Jenkins will automatically deploy changes to the application, follow the instructions in the <a href="https://docs.google.com/document/d/17zBcHiBXsOMoa5IrgD9PFxOiA1_Uc79PkcBgj-hhb9Y/edit?sharingaction=ownershiptransfer#heading=h.y8bxtfxbubdo" rel="noreferrer">"Making Changes to the Source Code Section".</a></p>
+              </section>
+              <section>
+                <h2>4.4	Making Changes in Source Code</h2>
+                <p>
+                  To make sure Jenkins polling works as expected (i.e. a new build is triggered when changes to the source code are detected), we will make a change and see if it is reflected.
+                  <ol type="1">
+                    <li>
+                      Open the Bootcamp repo on your local computer, and make a change to index.jsp under webapp/src/main/webapp.
+                    </li>
+                    <li>
+                      Commit and push your changes. See <a href="https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02here" rel="noreferrer">here</a> if you're not sure how.
+                    </li>
+                    <li>
+                      Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.
+                    </li>
+                    <li>
+                      Finally, go to http://<Ip type="Vm" />:8050/webapp/index.jsp and make sure the new changes are visible on the page.
+                    </li>
+                  </ol>
+                </p>
               </section>
             </div>
           </div>

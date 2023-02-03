@@ -5,6 +5,7 @@ import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import image1_0 from './images/bootcamp1.0.png';
 import image_vs from './images/installVS.png';
+import image_vs1 from './images/installVS.png';
 import image_vs2 from './images/installVS2.png';
 import image_vs3 from './images/installVS3.png';
 import image_vs4 from './images/installVS4.png';
@@ -20,6 +21,12 @@ import clone_repo from './images/clone_repo.png'
 import authorize_github from './images/authorize_github.png'
 import github_signin from './images/github_signin.png'
 import clone_vs from './images/clone_vs.png'
+import fork_git from './images/fork_git.png'
+import azure_1 from './images/azure_1.png'
+import azure_2 from './images/azure_2.png'
+import azure_3 from './images/azure_3.png'
+import azure_4 from './images/azure_4.png'
+import azure_5 from './images/azure_5.png'
 
 class Step1 extends StepBase {
   constructor(props) {
@@ -44,16 +51,19 @@ Enter same passphrase again:`
               <section>
                 <h2>1.0 Program Setup</h2>
                 <p>
-                  Shown in the figure below is a simulated DevOps environment which will be replicated in this lab. At first glance, the various parts, programs and tools which will be used may seem numerous. However, during the course of the lab, it will be seen that each of the distinct sections will be interconnected.
+                Shown in the figure below is a simulated DevOps environment which will be replicated in this lab. At first glance, the various parts, programs and tools which will be used may seem numerous. However, during the course of the lab, it will be seen that each of the distinct sections will be interconnected.
                 </p>
                 <p><img src={image1_0} className='image center' alt='Architecture for the bootcamp' /></p>
-                <p>For the purposes of this lab, only a portion of a typical DevOps pipeline will be replicated in order to show the tasks one might expect as a DevOps developer. Multiple open-source platforms, such as Jenkins and TomCat will be used, as these represent the most used – and in demand – applications which are being used in actuality today by CGI. </p>
-                <p className="fw-semibold">For this section of the lab manual, the left part of the diagram, the 'Continuous Integration' section will be setup. The main programs to use and setup in this section will be Visual Studio Code, GitBash and GitHub. </p>
+                <p>For the purposes of this lab, only a portion of a typical DevOps pipeline will be replicated in order to show the tasks one might expect as a DevOps developer. Multiple open-source platforms, such as Jenkins and TomCat will be used, as these represent one of the most used – and in demand – applications which are being used in actuality today by CGI.</p>
+                <p className="fw-semibold">For this section of the lab manual, the left part of the diagram, the ‘Continuous Integration’ section will be setup. The main programs to use and setup in this section will be Visual Studio Code, GitBash and GitHub.</p>
               </section>
               <section>
-                <h2>1.1 Download Visual Studio Code</h2>
+                <h2>1.1 Download and Install Visual Studio Code</h2>
                 <p>
                   <section className="list-step">
+                    <p>
+                      <a href="https://en.wikipedia.org/wiki/Visual_Studio_Code" rel="noreferrer">Visual Studio Code - Wikipedia</a>
+                    </p>
                     <div className="item-list">
                       <p>
                         <span className='name-item-list'>A</span>
@@ -64,22 +74,16 @@ Enter same passphrase again:`
                         You will be presented with the following page, download the version relevant to the OS you are using.
                       </p>
                       <p><img src={image_vs} className='image center' alt='Installation of Visual Studio' /></p>
-                      <p>A system running Windows 10 will be used for the purposes of lab demonstrations.</p>
+                      <p>Download the User Installer x64 and install VS Code following default options.</p>
                       <p>
                         <span className='name-item-list'>C</span>
-                        Select User Installer: 64-bit
+                        Finish installation and launch VS Code.
                       </p>
-                      <p>After downloading, follow the prompts to accept the terms, select a download location and to create a desktop shortcut if desired.</p>
-                      <p><img src={image_vs2} className='image left' alt='Installation of Visual Studio - Step 1' /><img src={image_vs3} className='image left' alt='Installation of Visual Studio - Step 2' /></p>
                       <p>
-                        <span className='name-item-list'>D</span>
-                        Finish Installation and Launch
+                        <span className='name-item-list'>C</span>
+                        What we would like to accomplish is to clone a repository, however, it will be seen that this option is currently greyed out.
                       </p>
-                      <p>After the following appears on your screen, select 'Finish' to launch Visual Studio.</p>
-                      <p><img src={image_vs4} className='image center' alt='Installation of Visual Studio - Last step' /></p>
-                      <p>You will be presented with the following screen upon first start-up</p>
-                      <p><img src={image_vs5} className='image center' alt='Installation of Visual Studio - Opening window' /></p>
-                      <p>What we would like to accomplish is to clone a repository, however, it will be seen that this option is currently greyed out. Step 2 will show the download process of Git. </p>
+                      <p><img src={image_vs5} className='image left' alt='Installation of Visual Studio - Step 1' /></p>
                     </div>
                   </section>
                 </p>
@@ -90,36 +94,38 @@ Enter same passphrase again:`
                   <section className="list-step">
                     <div className="item-list">
                       <p>
-                        <span className='name-item-list'>A</span>
-                        In order to <a href="https://git-scm.com/downloads" rel="noreferrer">link</a> Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the 'Extensions' menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
+                        <a href="https://en.wikipedia.org/wiki/Git" rel="noreferrer">Git - Wikipedia</a>
                       </p>
-                      <p>Press download and following the Setup Wizard to download Git on your system.</p>
+                      <p>
+                        <span className='name-item-list'>A</span>
+                        In order to link Git with Visual studio, the Git extension pack can be installed within Visual studio. Visual Studio extensions can be accessed by selecting the ‘Extensions’ menu on the left. When in the menu, the Git Extension Pack can be searched and installed.
+                      </p>
                       <p><img src={install_extension_vs} className='image center' alt='Installation Visual Studio Extension - Git' /></p>
                       <p>
                         <span className='name-item-list'>B</span>
-                        Press on this link to download Git. Download the version relevant to the OS you are using.                         
+                        Press on this <a href="https://git-scm.com/downloads" rel="noreferrer">link</a> to download Git. Download the version relevant to the OS you are using and install Git following default options.                      
                       </p>
                       <p><img src={install_git} className='image center' alt='Installation of Git for Windows' /></p>
-                      <p>You can go through the setup by pressing 'Next' on each of the steps. The default options are adequate in the scope of this bootcamp.</p>
-                      <p>After the installation has complete, launch GitBash for the first time. A terminal window similar to the Windows Command Prompt will open. This confirms that GitBash has downloaded properly.</p>
                       <p>
-                        <figure>
-                          <img src={prompt} className='image center' alt='Terminal for Git' />
-                          <figcaption>GitBash command line interface</figcaption>
-                        </figure>
+                        <span className='name-item-list'>C</span>
+                        After the installation has completed, launch GitBash for the first time. A terminal window similar to the Windows Command Prompt will open. This confirms that GitBash has been installed properly.                      
                       </p>
+                      <p><img src={prompt} className='image center' alt='Installation of Git for Windows' /></p>
                     </div>
                   </section>
                 </p>
               </section>
               <section>
-                <h2>1.3 Clone from GitHub.</h2>
+                <h2>1.3 Clone Bootcamp Repo from GitHub</h2>
                 <p>
                   <section className="list-step">
                     <div className="item-list">
                       <p>
+                        <a href="https://en.wikipedia.org/wiki/GitHub" rel="noreferrer">GitHub - Wikipedia</a>
+                      </p>
+                      <p>
                         <span className='name-item-list'>A</span>
-                        Now that GitBash has been installed, close Visual Studio code and relaunch it.
+                        Now that GitBash has been installed, close Visual Studio code and relaunch it. 
                       </p>
                       <p><img src={git_in_vs} className='image center' alt='Git in VS' /></p>
                       <p>The option to clone from a repo should now no longer be greyed out.</p>
@@ -128,24 +134,24 @@ Enter same passphrase again:`
                         The link to access the public repo can be accessed at this <a href="https://github.com/Sar4D/Bootcamp.git" rel="noreferrer">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
                       </p>                      
                       <p>
-                      If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" rel="noreferrer">link</a> and use your CGI email.                      
+                        If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" rel="noreferrer">link</a> and use your CGI email.                      
                       </p>
                       <p>
                         <span className='name-item-list'>C</span>
                         After accessing the repo, a 'fork' or the repo – essentially a copy, now needs to be made.
                       </p>
-                      <p><img src={install_git} className='image center' alt='Installation of Git for Windows' /></p>
+                      <p><img src={fork_git} className='image center' alt='Installation of Git for Windows' /></p>
                       <p>In the top left of the GitHub page of the repo is the fork button, press it to make a copy on your account.</p>
                       <p>
                         <span className='name-item-list'>D</span>
-                        Now that a fork has been created on your own GitHub account, open the GitBash console by searching 'GitBash'.                      </p>
+                          Now that a fork has been created on your own GitHub account, open the GitBash console by searching ‘GitBash’. In simple terms, we will now generate a private-public key pair in order to be able to perform work on our local computer and have it reflected in GitHub.</p>
                       <p><img src={gitbash_windows} className='image center' alt='Gitbash in VS' /></p>
-                      <p>To generate an RSA key of size 4096 bits with your email as the comment, type the following command into the GitBash terminal:
+                      <p>Type the following command into the GitBash terminal:
                       <SyntaxHighlighter language="bash">
                         {command_line_1}
                       </SyntaxHighlighter>
                       </p>
-                      <p>Replace the 'your.email' with your own CGI email address, the same used to create the GitHub account.</p>
+                      <p>Replace the ‘your.email’ with your own CGI email address, the same used to create the GitHub account.</p>
                       <p>You will then be asked:
                       <SyntaxHighlighter language="text">
                         {command_line_2}
@@ -164,7 +170,7 @@ Enter same passphrase again:`
                         {command_line_4}
                       </SyntaxHighlighter>
                       </p>
-                      <p>Replace the 'your.name' portion with your own username. If unsure of what your username is, scroll up and locate where GitBash stored your key under <i>"Your identification has been saved in /c/Users/your.name/.ssh/id_rsa"</i></p>
+                      <p>Replace the ‘firstname.lastname’ portion with your own. If unsure of what your username is, scroll up and locate where GitBash stored your key: Your identification has been saved in <i>"/c/Users/firstname.lastname/.ssh/id_rsa"</i></p>
                       <p>Now type in the command:
                       <SyntaxHighlighter language="bash">
                         {command_line_5}
@@ -207,6 +213,68 @@ Enter same passphrase again:`
                       </p>
                       <p><img src={clone_vs} className='image center' alt='Clone from VS' /></p>
                       <p>The URL copied from Github can now be pasted in the dialogue box at the top of Visual Studio. The location where the repo will be saved is the 'Git Repos' folder created on the desktop for ease of access.</p>
+                    </div>
+                  </section>
+                </p>
+              </section>
+              <section>
+                <h2>1.4 Connect to LAB VMs</h2>
+                <p>
+                  <section className="list-step">
+                    <div className="item-list">
+                      <p>
+                        <a href="https://en.wikipedia.org/wiki/Microsoft_Azure" rel="noreferrer">Microsoft Azure - Wikipedia</a>
+                      </p>
+                      <p>
+                        <span className='name-item-list'>A</span>
+                          You should have an email in your CGI mailbox from Azure inviting you to join the Munder Difflyn Tenant in Azure. (Previously set up in the Cloud Lab)
+                      </p>
+                      <p><img src={install_extension_vs} className='image center' alt='Installation Visual Studio Extension - Git' /></p>
+                      <p>
+                        <span className='name-item-list'>B</span>
+                          Navigate to https://portal.azure.com and log in with your CGI account.
+                      </p>
+                      <p>
+                        <span className='name-item-list'>C</span>
+                          Make sure you are in the Munder Difflyn directory (under your email address on the top right screen you should see MunderDifflyn, if you see CGI, click on Switch Directory and choose MunderDifflyn.
+                      </p>
+                      <p><img src={azure_1} className='image center' alt='Installation of Git for Windows' /></p>
+                      <p>
+                        <span className='name-item-list'>D</span>
+                          You will be redirected to the home page.
+                      </p>
+                      <p>
+                        <span className='name-item-list'>E</span>
+                          In the search bar on the top middle, enter BootcampLabVMs. Click on the Resource Group with that name. It is the resource group that contains your VM to access the lab environment. 
+                      </p>
+                      <p><img src={azure_2} className='image center' alt='Installation of Git for Windows' /></p>
+                      <p>
+                        <span className='name-item-list'>F</span>
+                          You can find your lab VM in that resource group. You can click on the VM that has your name. That will be your VM for the entire lab. Ex:
+                      </p>
+                      <p><img src={azure_3} className='image center' alt='Installation of Git for Windows' /></p>
+                      <p>
+                        <span className='name-item-list'>G</span>
+                          On your VMs page, you should see the Start button on the top left grayed out. That means the VM is already started. The VMs are configured to start at 8am and shut at 8 pm. If you wish to work after hours you can simply click on the Start button. It might take up to 5 minutes for the VM to start.
+                      </p>
+                      <p>
+                        <span className='name-item-list'>H</span>
+                          To connect to your VM, click on the connect button on the top left. Choose Bastion. (Bastion is a service that lets you connect securely to a virtual machine using your browser without exposing the public ip.)
+                      </p>
+                      <p>
+                        <span className='name-item-list'>I</span>
+                          On the Bastion page, Click on Connection Settings. Choose the RDP protocol, it will make you able to access the GUI on the Linux VM.  Connect using the Password authentication Type, Enter your name as the username and the Password is Bootc@mper2023.
+                      </p>
+                      <p><img src={azure_4} className='image center' alt='Installation of Git for Windows' /></p>
+                      <p>
+                        <span className='name-item-list'>J</span>
+                          If you are prompted with a XRDP Blue screen asking you for login credentials again, enter the same credentials as mentioned above.
+                      </p>
+                      <p>
+                        <span className='name-item-list'>K</span>
+                          Your VM will open on another browser page.
+                      </p>
+                      <p><img src={azure_5} className='image center' alt='Installation of Git for Windows' /></p>
                     </div>
                   </section>
                 </p>
