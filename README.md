@@ -38,7 +38,7 @@ You need to have `npm` version `9.3` and `nodejs` version `18`
 
 Go in the directory `app`.
 
-Launch `npm build`
+Launch `npm run build`
 
 Log to the Azure repositories for the bootcamp:
 
