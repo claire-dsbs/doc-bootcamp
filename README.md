@@ -44,11 +44,11 @@ Log to the Azure repositories for the bootcamp:
 
 `docker login bootcampv2.azurecr.io`
 
-Build the image:
+Build the image (in root project directory):
 
 `docker build . -t bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
-Push the image:
+Push the image (in root project directory):
 `docker push bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
 #### Add the project on Azure
