@@ -49,6 +49,7 @@ Build the image (in root project directory):
 `docker build . -t bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
 Push the image (in root project directory):
+
 `docker push bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
 #### Add the project on Azure
