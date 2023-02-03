@@ -38,22 +38,23 @@ You need to have `npm` version `9.3` and `nodejs` version `18`
 
 Go in the directory `app`.
 
-Launch `npm build`
+Launch `npm run build`
 
 Log to the Azure repositories for the bootcamp:
 
 `docker login bootcampv2.azurecr.io`
 
-Build the image:
+Build the image (in root project directory):
 
 `docker build . -t bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
-Push the image:
+Push the image (in root project directory):
+
 `docker push bootcampv2.azurecr.io/bootcamp-doc:<version>`
 
 #### Add the project on Azure
 
-Add a Container Instance. Choose `Azure Container Registry` for source. Choose the register, the image name and the version you want.
+Create a Container Instance. Choose `Azure Container Registry` for source. Choose the register, the image name and the version you want.
 
 For the port, replace the port `80` by the port `8080`.
 
