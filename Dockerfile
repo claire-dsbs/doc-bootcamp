@@ -14,6 +14,7 @@ COPY ./app/src ./src/
 COPY ./app/build ./build/
 COPY ./app/README.md ./
 RUN npm install -g npm@9.3
+RUN npm install serve
 RUN npm install --silent
 
 EXPOSE 8080

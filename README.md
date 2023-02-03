@@ -54,7 +54,7 @@ Push the image (in root project directory):
 
 #### Add the project on Azure
 
-Add a Container Instance. Choose `Azure Container Registry` for source. Choose the register, the image name and the version you want.
+Create a Container Instance. Choose `Azure Container Registry` for source. Choose the register, the image name and the version you want.
 
 For the port, replace the port `80` by the port `8080`.
 
