@@ -11,10 +11,17 @@ import Step4 from "./components/Step4"
 import Step5 from "./components/Step5"
 import Step6 from "./components/Step6"
 import Step7 from "./components/Step7"
-import Step8 from "./components/Step8"
-import Step9 from "./components/Step9"
-import Step10 from "./components/Step10"
-import Step11 from "./components/Step11"
+import CodeFormatting from "./components/CodeFormatting"
+import PipelineSecurity from "./components/PipelineSecurity"
+import AdvancedChallenges from "./components/AdvancedChallenges"
+import DAST from "./components/DAST"
+import Trivy from "./components/Trivy"
+import PrometheusGrafana from "./components/PrometheusGrafana"
+import Artifactory from "./components/Artifactory"
+import DetectSecrets from "./components/DetectSecrets"
+import Fuzzing from "./components/Fuzzing"
+import PatchApp from "./components/PatchApp"
+import Pipeline from "./components/Pipeline"
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(
@@ -33,10 +40,17 @@ root.render(
         <Route path="/step5" element={<Step5 />} />
         <Route path="/step6" element={<Step6 />} />
         <Route path="/step7" element={<Step7 />} />
-        <Route path="/step8" element={<Step8 />} />
-        <Route path="/step9" element={<Step9 />} />
-        <Route path="/step10" element={<Step10 />} />
-        <Route path="/step11" element={<Step11 />} />
+        <Route path="/codeformatting" element={<CodeFormatting />} />
+        <Route path="/pipelinesecurity" element={<PipelineSecurity />} />
+        <Route path="/advancedchallenges" element={<AdvancedChallenges />} />
+        <Route path="/dast" element={<DAST />} />
+        <Route path="/trivy" element={<Trivy />} />
+        <Route path="/prometheusgrafana" element={<PrometheusGrafana />} />
+        <Route path="/artifactory" element={<Artifactory />} />
+        <Route path="/detectSecrets" element={<DetectSecrets />} />
+        <Route path="/fuzzing" element={<Fuzzing />} />
+        <Route path="/patchApp" element={<PatchApp />} />
+        <Route path="/pipeline" element={<Pipeline />} />
       </Routes>
     </Router>
   </React.StrictMode>

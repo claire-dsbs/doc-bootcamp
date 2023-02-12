@@ -31,7 +31,7 @@ class Navigation extends React.Component {
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <div className="container">
             <NavLink className="navbar-brand" to="/">
-              Security Bootcamp
+              DevSecOps Bootcamp
               <br /><i>Instructional and Setup Document</i>
             </NavLink>
             <div>
@@ -83,26 +83,71 @@ class Navigation extends React.Component {
                     {this.isDone("step7")}
                   </NavLink>
                 </li>
-                <li className="nav-item">
-                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step8 ? "finished" : ""}`} to="/step8" name="step8">
-                    Step 8
-                    {this.isDone("step8")}
+              </ul>
+              <ul className="navbar-nav ml-auto">
+              <li className="nav-item">
+                  <NavLink className='nav-link' to="/advancedchallenges" name="advancedchallenges">
+                    Advanced Challenges
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className={`nav-link ${this.state !== undefined && this.state.step9 ? "finished" : ""}`} to="/step9" name="step9">
-                    Step 9
-                    {this.isDone("step9")}
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.detectsecrets ? "finished" : ""}`} to="/detectsecrets" name="detectsecrets">
+                    Detect-Secrets
+                    {this.isDone("detectsecrets")}
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className='nav-link' to="/step10" name="step10">
-                    Appendix A
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.codeformatting ? "finished" : ""}`} to="/codeformatting" name="codeformatting">
+                    Linting
+                    {this.isDone("codeformatting")}
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className='nav-link' to="/step11" name="step11">
-                    Appendix B
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.trivy ? "finished" : ""}`} to="/trivy" name="trivy">
+                    Trivy
+                    {this.isDone("trivy")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.dast ? "finished" : ""}`} to="/dast" name="dast">
+                    DAST
+                    {this.isDone("dast")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.pipelinesecurity ? "finished" : ""}`} to="/pipelinesecurity" name="pipelinesecurity">
+                    KICS
+                    {this.isDone("pipelinesecurity")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.fuzzing ? "finished" : ""}`} to="/fuzzing" name="fuzzing">
+                    Fuzzing
+                    {this.isDone("fuzzing")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.prometheusgrafana ? "finished" : ""}`} to="/prometheusgrafana" name="prometheusgrafana">
+                    Monitoring
+                    {this.isDone("prometheusgrafana")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.artifactory ? "finished" : ""}`} to="/artifactory" name="artifactory">
+                    Artifactory
+                    {this.isDone("artifactory")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.pipeline ? "finished" : ""}`} to="/pipeline" name="pipeline">
+                    Pipelining
+                    {this.isDone("pipeline")}
+                  </NavLink>
+                </li>
+                <li className="nav-item">
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.patchapp ? "finished" : ""}`} to="/patchapp" name="patchapp">
+                    Patching
+                    {this.isDone("patchapp")}
                   </NavLink>
                 </li>
               </ul>

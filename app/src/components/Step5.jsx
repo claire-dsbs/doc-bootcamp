@@ -9,8 +9,6 @@ import ReactDOMServer from 'react-dom/server';
 import docker_logo from './images/docker_logo.png';
 import config_system from './images/config_system.png';
 import ssh_remote_hosts from './images/ssh_remote_hosts.png';
-import config_build_5 from './images/config_build_5.png';
-import post_build_5 from './images/post_build_5.png';
 import error_5 from './images/error_5.png';
 import result_5 from './images/result_5.png';
 import tomcat_container from './images/tomcat_container.png'
@@ -59,7 +57,7 @@ docker rm name_of_container`;
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">5 -	DevOps Lab - Deploy App on Docker container</h1>
+              <h2 className="font-weight-light">5 -	DevOps Lab - Deploy App on Docker container</h2>
               <section>
                 <div className="row">
                   <div className="col">
@@ -114,7 +112,7 @@ docker rm name_of_container`;
                         {command_line_3}
                       </SyntaxHighlighter>
                     </li>
-                    <li>Check that the Tomcat server in the Docker container is up: http://<Ip type='Cd' />:8081/
+                    <li>Check that the Tomcat server in the Docker container is up: <b>http://<Ip type='Vm' />:8081/</b>
                     </li>
                     <li>Delete the container to prevent future port conflicts:
                       <SyntaxHighlighter language="bash">
@@ -122,7 +120,6 @@ docker rm name_of_container`;
                       </SyntaxHighlighter>
                     </li>
                   </ol>
-                  NOTE - For more Docker commands, check out <a href="/step10" rel="noreferrer">"Appendix"</a> section at the end of the document
                 </p>
                 <h3>5.3	Create a Dockerfile</h3>
                 <p>
@@ -155,7 +152,7 @@ docker rm name_of_container`;
                       NOTE: If you get an error saying that the container is already in use, run the commands in 6.b.iii to stop and delete the running container (with the name simple-devops-container).
                     </li>
                     <li>
-                      Check that the page loads by visiting: http://<Ip type='Cd' />:/8081/webapp
+                      Check that the page loads by visiting: <b>http://<Ip type='Vm' />:/8081/webapp</b>
                       <p><img src={tomcat_container} className='image center' alt='Installation of Git for Windows' /></p>
                     </li>
                     <li>
@@ -193,7 +190,7 @@ docker rm name_of_container`;
                       From your view, click Create a New Item <Name case="capitalize" app_name="Deploy-on-Container" /> and copy from <Name case="capitalize" app_name="Deploy-on-Tomcat-Server" />
                     </li>
                     <li>
-                      In the Source Code Management section, make sure that you still point to */master in the repo https://github.com/YourForkFromGithub/bootcamp.git
+                      In the Source Code Management section, make sure that you still point to */master in the repo <b>https://github.com/YourForkFromGithub/bootcamp.git</b>
                     </li>
                     <li>
                       Set Poll SCM to * * * * *
@@ -234,7 +231,7 @@ docker rm name_of_container`;
               <section>
                 <h2>5.5	Expected Output</h2>
                 <p>
-                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type='Cd' />:8081/webapp and see something like the following:
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open <b>http://<Ip type='Vm' />:8081/webapp</b> and see something like the following:
                   <img src={result_5} className='image center' alt='The result you should have' />
                 </p>
               </section>
@@ -253,7 +250,7 @@ docker rm name_of_container`;
                       Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.
                     </li>
                     <li>
-                      Finally, go to http://<Ip type='Cd' />:8081/webapp and make sure the new changes are visible on the page.
+                      Finally, go to <b>http://<Ip type='Vm' />:8081/webapp</b> and make sure the new changes are visible on the page.
                     </li>
                   </ol>
                 </p>

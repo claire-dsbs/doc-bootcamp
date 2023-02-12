@@ -4,7 +4,6 @@ import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Name from './Name';
 import Ip from './Ip';
-import post_build from './images/post_build.png';
 import first_result from './images/first_result.png';
 
 class Step4 extends StepBase {
@@ -20,7 +19,7 @@ class Step4 extends StepBase {
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">4 -	DevOps Lab - Deploying the Web Application</h1>
+              <h2 className="font-weight-light">4 -	DevOps Lab - Deploying the Web Application</h2>
               <section>
                 <h2>4.0 Setup</h2>
                 <p>
@@ -47,7 +46,7 @@ class Step4 extends StepBase {
                       </SyntaxHighlighter>
                     </li>
                     <li>
-                      Open your browser and access http://<Ip type="Vm" />:8050
+                      Open your browser and access <b>http://<Ip type="Vm" />:8050</b>
                     </li>
                   </ol>
                 </p>
@@ -71,8 +70,8 @@ class Step4 extends StepBase {
                       In Post-Build Actions section, select Deploy war/ear to container and input the following:
                       <ul>**/*.war for WAR/EAR files</ul>
                       <ul>Tomcat 9.x for Containers</ul>
-                      <ul>Your credentials for Credentials</ul>
-                      <ul>http://<Ip type="Vm" />:8050 for Tomcat URL</ul>
+                      <ul>deployer Credentials for Credentials</ul>
+                      <ul><b>http://<Ip type="Vm" />:8050</b> for Tomcat URL</ul>
                     </li>
                     <li>
                       Save and run the job now.
@@ -83,7 +82,7 @@ class Step4 extends StepBase {
               <section>
                 <h2>4.3	Expected Output</h2>
                 <p>
-                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type='Cd' />:8050/webapp/index.jsp and see something like the following:
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open <b>http://<Ip type='Vm' />:8050/webapp/index.jsp</b> and see something like the following:
                 </p>
                 <p><img src={first_result} className='image center' alt='The result of your success' /></p>
               </section>
@@ -96,7 +95,7 @@ class Step4 extends StepBase {
                       Open the Bootcamp repo on your local computer, and make a change to index.jsp under webapp/src/main/webapp.
                     </li>
                     <li>
-                      Commit and push your changes. See <a href="https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02here" rel="noreferrer">here</a> if you're not sure how.
+                      Commit and push your changes. See <a href="https://zeroesandones.medium.com/how-to-commit-and-push-your-changes-to-your-github-repository-in-vscode-77a7a3d7dd02" rel="noreferrer">here</a> if you're not sure how.
                     </li>
                     <li>
                       Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.

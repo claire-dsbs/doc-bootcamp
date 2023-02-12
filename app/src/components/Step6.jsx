@@ -8,7 +8,6 @@ import ReactDOMServer from 'react-dom/server';
 import Ip from './Ip';
 import ansible from './images/ansible.png';
 import example_hosts_file from './images/example_hosts_file.png';
-import post_build_6 from './images/post_build_6.png';
 import error_6 from './images/error_6.png';
 import result_6 from './images/result_6.png';
 import jenkins_container_creds_2 from './images/jenkins_container_creds_2.png'
@@ -21,6 +20,8 @@ class Step6 extends StepBase {
 
   render() {
     const name = ReactDOMServer.renderToString(<NameBase />);
+
+    const name_capitalized = name.charAt(0).toUpperCase() + name.slice(1);
 
     const code_1 = 'sudo mkdir /opt/docker/' + name.toLowerCase()
 
@@ -46,7 +47,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
 
     - name: copy war from Jenkins to target host
       copy:
-        src: /var/lib/jenkins/workspace/` + name.toLowerCase() + `-Deploy-on-Container-using-Ansible/webapp/target/webapp.war
+        src: /var/lib/jenkins/workspace/` + name_capitalized + `-Deploy-on-Container-using-Ansible/webapp/target/webapp.war
         dest: /opt/docker/` + name.toLowerCase() + `
 
     - name: stop current container
@@ -76,7 +77,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">6 -	DevOps Lab - Deploy App on Docker Container Using Ansible</h1>
+              <h2 className="font-weight-light">6 -	DevOps Lab - Deploy App on Docker Container Using Ansible</h2>
               <section>
                 <div className="row">
                   <div className="col">
@@ -149,7 +150,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                       From your view, click Create a New Item <Name case="capitalize" app_name="Deploy-on-Container-using-Ansible" /> and copy from <Name case="capitalize" app_name="Deploy-on-Container" />
                     </li>
                     <li>
-                      In the Source Code Management section, make sure that you still point to */master in the repo https://github.com/YourForkFromGithub/bootcamp.git
+                      In the Source Code Management section, make sure that you still point to */master in the repo <b>https://github.com/YourForkFromGithub/bootcamp.git</b>
                     </li>
                     <li>
                       Set Poll SCM to * * * * *
@@ -181,7 +182,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
               <section>
                 <h2>6.5	Expected Output</h2>
                 <p>
-                  Check the console output and make sure the job ran successfully. If so, you should be able to open http://<Ip type="Cd" />:8081/webapp and see something like the following:
+                  Check the console output and make sure the job ran successfully. If so, you should be able to open <b>http://<Ip type="Vm" />:8081/webapp</b> and see something like the following:
                   <img src={result_6} className='image center' alt='Your expected result' />
                   If you get an error regarding container being in use, make sure to stop and delete the container like previously seen.
                 </p>
@@ -201,7 +202,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                       Go to your Jenkins job and make sure it was triggered (give it up to a minute as it is not immediate) and that it ran successfully.
                     </li>
                     <li>
-                      Finally, go to http://<Ip type='Cd' />:8081/webapp and make sure the new changes are visible on the page.
+                      Finally, go to <b>http://<Ip type='Vm' />:8081/webapp</b> and make sure the new changes are visible on the page.
                     </li>
                   </ol>
                 </p>
