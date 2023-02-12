@@ -5,10 +5,6 @@ import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import image1_0 from './images/bootcamp1.0.png';
 import image_vs from './images/installVS.png';
-import image_vs1 from './images/installVS.png';
-import image_vs2 from './images/installVS2.png';
-import image_vs3 from './images/installVS3.png';
-import image_vs4 from './images/installVS4.png';
 import image_vs5 from './images/installVS5.png';
 import install_extension_vs from './images/install_extension_vs.png';
 import install_git from './images/install_git.png';
@@ -47,7 +43,7 @@ Enter same passphrase again:`
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">1 - DevOps in Action</h1>
+              <h2 className="font-weight-light">1 - DevOps in Action</h2>
               <section>
                 <h2>1.0 Program Setup</h2>
                 <p>
@@ -131,7 +127,7 @@ Enter same passphrase again:`
                       <p>The option to clone from a repo should now no longer be greyed out.</p>
                       <p>
                         <span className='name-item-list'>B</span>
-                        The link to access the public repo can be accessed at this <a href="https://github.com/Sar4D/Bootcamp.git" rel="noreferrer">link</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
+                        The link to access the public repo can be accessed at <a href="https://github.com/Sar4D/Bootcamp.git" rel="noreferrer">https://github.com/Sar4D/Bootcamp.git</a>. The invite link redirects to a code base with all of the code necessary for the bootcamp.
                       </p>                      
                       <p>
                         If you do not have a GitHub account with CGI yet, create one for free by pressing this <a href="https://github.com/join" rel="noreferrer">link</a> and use your CGI email.                      
@@ -229,10 +225,9 @@ Enter same passphrase again:`
                         <span className='name-item-list'>A</span>
                           You should have an email in your CGI mailbox from Azure inviting you to join the Munder Difflyn Tenant in Azure. (Previously set up in the Cloud Lab)
                       </p>
-                      <p><img src={install_extension_vs} className='image center' alt='Installation Visual Studio Extension - Git' /></p>
                       <p>
                         <span className='name-item-list'>B</span>
-                          Navigate to https://portal.azure.com and log in with your CGI account.
+                          Navigate to <a href="https://portal.azure.com" rel="noreferrer">https://portal.azure.com</a> and log in with your CGI account.
                       </p>
                       <p>
                         <span className='name-item-list'>C</span>

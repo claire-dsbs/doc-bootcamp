@@ -4,6 +4,7 @@ import CompleteCheck from './CompleteCheck';
 import Name from './Name';
 import jenkins_build from './images/jenkins_build.png';
 import jenkins_output from './images/jenkins_output.png';
+import post_steps from './images/post_steps.PNG';
 
 class Step3 extends StepBase {
   constructor(props) {
@@ -16,7 +17,7 @@ class Step3 extends StepBase {
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">3 -	DevOps Lab - Building a CI pipeline for the Web Application</h1>
+              <h2 className="font-weight-light">3 -	DevOps Lab - Building a CI pipeline for the Web Application</h2>
               <section>
                 <h2>3.0	Setup</h2>
                 <p>
@@ -52,13 +53,17 @@ class Step3 extends StepBase {
                         Enter an item name: <Name />-My-First-Maven-Project<br />
                         Select "Maven Project"<br />
                         In the "Source Code Management" Section:<br />
-                        Repository: https://github.com/YourForkFromGithub/Bootcamp.git <br />
+                        Repository: <b>https://github.com/YourForkFromGithub/Bootcamp.git</b> <br />
                         Branches to build : */master
                       </p>
                       In the "Build" Section:<br />
                       Root POM: pom.xml<br />
                       Goals and options: clean install package
                       <p><img src={jenkins_build} className='image center' alt='Menu build in jenkins interface' /></p>
+                    </li>
+                    <li>
+                      In Post steps, make sure to select <b>Run only if build succeeds</b>
+                      <p><img src={post_steps} className='image center' alt='Menu build in jenkins interface' /></p>
                     </li>
                     <li>Save your job</li>
                     <li>Build job</li>

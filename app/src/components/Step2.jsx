@@ -24,7 +24,7 @@ class Step2 extends StepBase {
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h1 className="font-weight-light">2 -	DevOps Lab - Jenkins Fundamentals</h1>
+              <h2 className="font-weight-light">2 -	DevOps Lab - Jenkins Fundamentals</h2>
               <section>
                 <h2>2.0	Setup</h2>
                 <p>
@@ -34,7 +34,7 @@ class Step2 extends StepBase {
                       Log in to your Linux LAB VM (through Bastion RDP using your credentials).
                     </li>
                     <li>
-                      From a browser (Firefox), access the Jenkins UI: http://10.19.0.5:8080 
+                      From a browser (Firefox), access the Jenkins UI: <b>http://10.19.0.5:8080</b>
                     </li>
                     <li>
                       Log in to Jenkins using your credentials.
