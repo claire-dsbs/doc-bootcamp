@@ -22,7 +22,7 @@ import sonar_status from './images/sonar_status.png';
 import image1_0 from './images/bootcamp1.0.png';
 import dockerfile_github from './images/dockerfile_github.png';
 import Name from './Name';
-
+import sonar_vul from './images/sonar_vul.PNG';
 
 class Step7 extends StepBase {
   constructor(props) {
@@ -142,11 +142,11 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
                       Password: B00tcamperm4aster
                     </li>
                     <li>Click Create Project and select manually
-                      <img src={sonar_interface} className='image center' alt='Sonar interface' />
+                      <p><img src={sonar_interface} className='image center' alt='Sonar interface' /></p>
                     </li>
                     <li>Name your SonarQube project with the same name as your Jenkins job and make sure to keep the project key the same.</li>
                     <li>Select locally
-                      <img src={sonar_locally} className='image center' alt='Sonar interface' />
+                    <p><img src={sonar_locally} className='image center' alt='Sonar interface' /></p>
                     </li>
                     <li>Select use existing token and input the following: -&gt; sqa_c77abdf91b247768224b17ce227fe6090fecf8e9</li>
                   </ol>
@@ -156,21 +156,21 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
                 <p>
                   <ol type="1">
                     <li>Go back to your Jenkins job and add the SonarQube token under Build Environment:
-                      <img src={build_sonar} className='image center' alt='Ansible schema' /></li>
+                    <p><img src={build_sonar} className='image center' alt='Ansible schema' /></p></li>
                     <li>
                       In pre-steps add the following step to perform a dependency-check:
-                      <img src={prestep_sonar_1} className='image center' alt='Ansible schema' />
+                      <p><img src={prestep_sonar_1} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>
                       Also in pre-steps, add a step called Execute SonarQube scanner and fill the Analysis properties with your information:
-                      <img src={prestep_sonar_2} className='image center' alt='Ansible schema' />
+                      <p><img src={prestep_sonar_2} className='image center' alt='Ansible schema' /></p>
                       <SyntaxHighlighter language="yaml">
                         {code_2}
                       </SyntaxHighlighter>
                     </li>
                     <li>
                       Add another pre-step as follows:
-                      <img src={execute_shell_7} className='image center' alt='Ansible schema' />
+                      <p><img src={execute_shell_7} className='image center' alt='Ansible schema' /></p>
                       <SyntaxHighlighter language="bash">
                         {code_3}
                       </SyntaxHighlighter>
@@ -181,11 +181,11 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
                     </li>
                     <li>Run your job and check that it succeeds.</li>
                     <li>Go to SonarQube and find your project:
-                      <img src={sonar_result} className='image center' alt='Ansible schema' />
+                    <p><img src={sonar_result} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>Click on the name and take a look at the report. There’s a lot of interesting things to look at here, but for the purpose of a demo, look at 13 vulnerabilities.</li>
                     <li>A quality gate <b>http://10.19.2.4:9000/quality_gates/show/AYSXBvHz-aZ8zPsTtTcL</b> has been setup to PASS if the number of vulnerabilities is LESS THAN OR EQUAL TO 13.
-                      <img src={sonar_quality_gates} className='image center' alt='Ansible schema' />
+                    <p><img src={sonar_quality_gates} className='image center' alt='Ansible schema' /></p>
                       FOOD FOR THOUGHT: This is an example of a quality gate that was setup for this bootcamp for simplicity reasons. Having more or less than 13 vulnerabilities to decide whether an analysis is ok or not does not make sense in the real world. What do you think a good quality gate condition (or a set of conditions) would be?
                     </li>
                     <li>Now, let’s change our code a bit and inject a new vulnerability to see what happens.</li>
@@ -199,18 +199,21 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
                     <li>In order to see how the quality gate works in more detail, we will inject a new vulnerability and see what happens.
                     </li>
                     <li>Go to the pom.xml file in your repository and uncomment the log4j dependency:
-                      <img src={pom_72} className='image center' alt='Ansible schema' />
+                    <p><img src={pom_72} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>Commit and push your changes. The Jenkins job should start running soon after it discovers a new change in your repository.</li>
                     <li>Look at the job output, you should see that it FAILED and you should the following:
-                      <img src={failure_result} className='image center' alt='Ansible schema' />
+                    <p><img src={failure_result} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>Go to sonarqube again, and take a look at your project:
-                      <img src={sonar_fail} className='image center' alt='Ansible schema' />
+                    <p><img src={sonar_fail} className='image center' alt='Ansible schema' /></p>
                       It now says Failed! This is because the quality gate that we have set in place has not been met. We now have more than 13 vulnerabilities which makes the quality gate not pass.
                     </li>
                     <li>Back in your Jenkins job, notice that the build did not occur in the Jenkins job. This is because the quality gate check returned a failure and prevented the job from building. Such behavior is very useful as we don’t want to build projects that don’t pass our tests.
-                      <img src={sonar_status} className='image center' alt='Ansible schema' />
+                    <p><img src={sonar_status} className='image center' alt='Ansible schema' /></p>
+                    </li>
+                    <li>Take a look now at your SonarQube Job. Go to vulnerabilities and try to spot the new vulnerability that made the quality gate not pass (i.e. the one you uncommented in the pom.xml). Take a note of some interesting things regarding the vulnerability. Also, look at the scan results. Note down information that you deem interesting.
+                      <p><img src={sonar_vul} className='image center' alt='Ansible schema' /></p>
                     </li>
                   </ol>
                 </p>

@@ -10,8 +10,8 @@ import docker_logo from './images/docker_logo.png';
 import config_system from './images/config_system.png';
 import ssh_remote_hosts from './images/ssh_remote_hosts.png';
 import error_5 from './images/error_5.png';
-import result_5 from './images/result_5.png';
-import tomcat_container from './images/tomcat_container.png'
+import result_5 from './images/result_5.PNG';
+import tomcat_container from './images/tomcat_container.PNG'
 import jenkins_container_creds_2 from './images/jenkins_container_creds_2.png'
 import jenkins_container_cmd from './images/jenkins_container_cmd.png'
 import jenkins_container_post_actions from './images/jenkins_container_post_actions.png'
@@ -61,7 +61,7 @@ docker rm name_of_container`;
               <section>
                 <div className="row">
                   <div className="col">
-                    <img src={docker_logo} className='image center' alt='Logo of Docker' />
+                  <p><img src={docker_logo} className='image center' alt='Logo of Docker' /></p>
                   </div>
                   <div className="col center">
                     Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly. With Docker, you can manage your infrastructure in the same ways you manage your applications. By taking advantage of Docker's methodologies for shipping, testing, and deploying code quickly, you can significantly reduce the delay between writing code and running it in production.
@@ -152,7 +152,7 @@ docker rm name_of_container`;
                       NOTE: If you get an error saying that the container is already in use, run the commands in 6.b.iii to stop and delete the running container (with the name simple-devops-container).
                     </li>
                     <li>
-                      Check that the page loads by visiting: <b>http://<Ip type='Vm' />:/8081/webapp</b>
+                      Check that the page loads by visiting: <b>http://<Ip type='Vm' />:8081/webapp</b>
                       <p><img src={tomcat_container} className='image center' alt='Installation of Git for Windows' /></p>
                     </li>
                     <li>
@@ -182,9 +182,9 @@ docker rm name_of_container`;
                 <p>
                   <ol type="1">
                     <li>In Jenkins, go to Dashboard {'>'} Manage Jenkins {'>'} Configure System
-                      <img src={config_system} className='image center' alt='Config system interface' />
+                      <p><img src={config_system} className='image center' alt='Config system interface' /></p>
                       Scroll down and add a new SSH remote hosts with the IP of your target with the preconfigured credentials bootcamper
-                      <img src={ssh_remote_hosts} className='image center' alt='Configuration of the SSH remote hosts' />
+                      <p><img src={ssh_remote_hosts} className='image center' alt='Configuration of the SSH remote hosts' /></p>
                     </li>
                     <li>
                       From your view, click Create a New Item <Name case="capitalize" app_name="Deploy-on-Container" /> and copy from <Name case="capitalize" app_name="Deploy-on-Tomcat-Server" />
@@ -197,7 +197,7 @@ docker rm name_of_container`;
                     </li>
                     <li>
                       Under build environment, set the following credentials so the can be used in the shell script below without being cleartext:
-                      <img src={jenkins_container_creds_2} className='image center' alt='Config system interface' />
+                      <p><img src={jenkins_container_creds_2} className='image center' alt='Config system interface' /></p>
                     </li>
                     <li>
                       In the Post Steps section, click Add post-build step, add Execute shell script on remote host using ssh and paste the following code under Command:
@@ -205,21 +205,21 @@ docker rm name_of_container`;
                         {command_line_10}
                       </SyntaxHighlighter>
                       What the code does is that it pulls the image from the Jenkins server (where it's built) into the /home/bootcamper directory, creates a docker image from it and runs it.
-                      <img src={jenkins_container_cmd} className='image center' alt='Config system interface' />
+                      <p><img src={jenkins_container_cmd} className='image center' alt='Config system interface' /></p>
                     </li>
                     <li>
                       Make sure to select your VM IP under SSH Site.
                     </li>
                     <li>
                       Also, delete everything under Post-build Actions:
-                      <img src={jenkins_container_post_actions} className='image center' alt='Config system interface' />
+                      <p><img src={jenkins_container_post_actions} className='image center' alt='Config system interface' /></p>
                     </li>
                     <li>
                       Save job.
                     </li>
                     <div>
                       If your build doesn't work. Look at your build console output. It probably shows this:
-                      <img src={error_5} className='image center' alt='Configuration of your IP' />
+                      <p><img src={error_5} className='image center' alt='Configuration of your IP' /></p>
                       If so, go to your terminal, and enter these commands with the name of your container:
                       <SyntaxHighlighter language="bash">
                         {command_line_11}
@@ -232,7 +232,7 @@ docker rm name_of_container`;
                 <h2>5.5	Expected Output</h2>
                 <p>
                   Check the console output and make sure the job ran successfully. If so, you should be able to open <b>http://<Ip type='Vm' />:8081/webapp</b> and see something like the following:
-                  <img src={result_5} className='image center' alt='The result you should have' />
+                  <p><img src={result_5} className='image center' alt='The result you should have' /></p>
                 </p>
               </section>
               <section>
