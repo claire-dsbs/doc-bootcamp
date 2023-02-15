@@ -4,7 +4,7 @@ import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import Name from './Name';
 import Ip from './Ip';
-import first_result from './images/first_result.png';
+import first_result from './images/first_result.PNG';
 
 class Step4 extends StepBase {
   constructor(props) {

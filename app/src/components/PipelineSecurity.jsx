@@ -31,28 +31,28 @@ class PipelineSecurity extends StepBase {
             <div className="col-lg-12">
               <h2 className="font-weight-light">DevSecOps Advanced Challenge: Integrate Security Control on the Pipeline Itself</h2>
               <section>
-                <h3>Using the declarative pipeline built for deploying and running ZAP scan, we can add a security control on the pipeline pretty easily with KICS:</h3>
+                <h4>Using the declarative pipeline built for deploying and running ZAP scan, we can add a security control on the pipeline pretty easily with KICS:</h4>
                 <p><a href="https://github.com/Checkmarx/kics">https://github.com/Checkmarx/kics</a></p>
-                <h3>For easy Jenkins integration, refer to that quick documentation:</h3>
+                <h4>For easy Jenkins integration, refer to that quick documentation:</h4>
                 <p><a href="https://github.com/Checkmarx/kics/blob/master/docs/integrations_jenkins.md">https://github.com/Checkmarx/kics/blob/master/docs/integrations_jenkins.md</a></p>
                 <p>The required add-ons to Jenkins have already been installed.</p>
-                <h3>Create in Jenkins a new project, choosing the pipeline option:</h3>
+                <h4>Create in Jenkins a new project, choosing the pipeline option:</h4>
                 <p><img src={ps1} className='image center' alt='Output after the build' /></p>
-                <h3>Once your project created, got get the same script you used to deploy ZAP, and copy/paste it to the appropriate place.</h3>
+                <h4>Once your project created, got get the same script you used to deploy ZAP, and copy/paste it to the appropriate place.</h4>
                 <p><img src={ps2} className='image center' alt='Output after the build' /></p>
                 <p>As you can see, you pretty much have to take the file with the declarative pipeline and paste this part at the right place in it (the grayed one in the previous screenshot):</p>
                 <SyntaxHighlighter language="bash">
                   {code_1}
                 </SyntaxHighlighter>
-                <h3>Now save it and run.</h3>
+                <h4>Now save it and run.</h4>
                 <p><img src={ps3} className='image center' alt='Output after the build' /></p>
                 <p>Here you can see the parts that are interesting to us.</p>
-                <h3>Click in the KICS Results and you will see what the pipeline’s scan results can look like.</h3>
+                <h4>Click in the KICS Results and you will see what the pipeline’s scan results can look like.</h4>
                 <p><img src={ps4} className='image center' alt='Output after the build' /></p>
                 <p>Here there are no vulnerabilities discovered in the pipeline, but obviously in some instances you could introduce vulnerabilities in your DevOps / CI/CD.
                 This tool is there to make sure the changes to your CI/CD pipeline are not introducing vulnerable components.</p>
-                <h3>Try to integrate it with DefectDojo, by formatting the output and pushing it through a POST request.</h3>
-                <h3>If you want to have a good idea of the power of this tool, check its targeted queries, allowing a more targeted scan:</h3>
+                <h4>Try to integrate it with DefectDojo, by formatting the output and pushing it through a POST request.</h4>
+                <h4>If you want to have a good idea of the power of this tool, check its targeted queries, allowing a more targeted scan:</h4>
                 <a href="https://docs.kics.io/latest/queries/">https://docs.kics.io/latest/queries/</a><br/>and<br/>
                 <a href="https://docs.kics.io/latest/queries/all-queries/">https://docs.kics.io/latest/queries/all-queries/</a>
               </section>

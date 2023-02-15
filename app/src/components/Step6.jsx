@@ -9,7 +9,7 @@ import Ip from './Ip';
 import ansible from './images/ansible.png';
 import example_hosts_file from './images/example_hosts_file.png';
 import error_6 from './images/error_6.png';
-import result_6 from './images/result_6.png';
+import result_6 from './images/result_6.PNG';
 import jenkins_container_creds_2 from './images/jenkins_container_creds_2.png'
 import jenkins_ansible from './images/jenkins_ansible.png'
 
@@ -81,7 +81,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
               <section>
                 <div className="row">
                   <div className="col">
-                    <img src={ansible} className='image left' alt='Ansible schema' />
+                    <p><img src={ansible} className='image left' alt='Ansible schema' /></p>
                   </div>
                   <div className="col center">
                     Ansible is an IT automation tool. It can configure systems, deploy software, and orchestrate more advanced IT tasks such as continuous deployments or zero downtime rolling updates. Ansible’s main goals are simplicity and ease-of-use.<br />
@@ -134,7 +134,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                   <ol type="1">
                     <li>Similarly to the previous step, create a file named hosts (without an extension) and write in it your VM IP.</li>
                     <li>Add your Lab VM IP: <Ip type="Vm" />
-                      <img src={example_hosts_file} className='image center' alt='Ansible schema' />
+                    <p><img src={example_hosts_file} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>Once done, commit and push everything.</li>
                   </ol>
@@ -157,7 +157,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                     </li>
                     <li>
                       In Build triggers, under Use secret text(s) or file(s), modify the specific credentials to bootcamper
-                      <img src={jenkins_container_creds_2} className='image center' alt='Ansible schema' />
+                      <p><img src={jenkins_container_creds_2} className='image center' alt='Ansible schema' /></p>
                     </li>
                     <li>
                       Remove Execute shell script on remote host using ssh post-build step. 
@@ -167,7 +167,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                       <SyntaxHighlighter language="bash">
                         {code_5}
                       </SyntaxHighlighter>
-                      <img src={jenkins_ansible} className='image center' alt='Ansible schema' />
+                      <p><img src={jenkins_ansible} className='image center' alt='Ansible schema' /></p>
                       This command runs the ansible-playbook.yml file and passes to it the necessary credentials to perform the tasks within the playbook.
                     </li>
                     <li>
@@ -175,7 +175,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                     </li>
                   </ol>
                   If the build failed because of this error:
-                  <img src={error_6} className='image center' alt='Error you can have at the end of this step' />
+                  <p><img src={error_6} className='image center' alt='Error you can have at the end of this step' /></p>
                   Make sure to deactivate Poll SCM in your previous jobs.
                 </p>
               </section>
@@ -183,7 +183,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
                 <h2>6.5	Expected Output</h2>
                 <p>
                   Check the console output and make sure the job ran successfully. If so, you should be able to open <b>http://<Ip type="Vm" />:8081/webapp</b> and see something like the following:
-                  <img src={result_6} className='image center' alt='Your expected result' />
+                  <p><img src={result_6} className='image center' alt='Your expected result' /></p>
                   If you get an error regarding container being in use, make sure to stop and delete the container like previously seen.
                 </p>
               </section>
