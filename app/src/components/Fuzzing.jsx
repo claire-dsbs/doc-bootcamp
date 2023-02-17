@@ -31,7 +31,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h2 className="font-weight-light">DevSecOps Advanced Challenge: Fuzzing, Automated Pentest</h2>
+              <h2 className="font-weight-light">DevSecOps Advanced Challenge: Fuzzing, Automated Pentesting</h2>
               <section>
               <h3>So, at this point you’ve seen DAST, SAST, and other security automated tools.</h3>
               <ul>
