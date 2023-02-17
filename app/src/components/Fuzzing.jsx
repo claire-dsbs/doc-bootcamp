@@ -31,47 +31,47 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
         <div className="container">
           <div className="row align-items-center my-12">
             <div className="col-lg-12">
-              <h2 className="font-weight-light">DevSecOps Advanced Challenge: Integrate Fuzzing</h2>
+              <h2 className="font-weight-light">DevSecOps Advanced Challenge: Fuzzing, Automated Pentesting</h2>
               <section>
               <h3>So, at this point you’ve seen DAST, SAST, and other security automated tools.</h3>
               <ul>
-                <li>What general security principle(s) can you associate with the choice of having several security tools in a DevOps environment, which would apply to other information systems?</li>
-                <li>The goal is to expose you to the main concepts, and eventually be able to distinguish it from SonarQube, Zap, Trivy and Unit tests.</li>
+                <li>What general security principle(s) can you associate with the choice of having several security tools in the same DevOps environment targeting the same solution under development, which would apply to other information systems?</li>
+                <li>One of the end goal of this section is to expose you to the main concepts, and eventually be able to distinguish it from SonarQube, Zap, Trivy and Unit tests.</li>
               </ul>
-              <h3>A fuzzer is yet another (security) tool.</h3>
+              <h3>A fuzzer is yet another (security) tool, and it can fit in the already known category, DAST.</h3>
               <p>
-                It exists since the 90’s and has been used to discover vulnerabilities, both with attack and protection in mind, but also in having robust applications, discovering bugs other techniques and tools would not discover.
+                It exists since the 90’s and has been used to discover vulnerabilities, both with attack and protection in mind, but it also has been used having robust applications, discovering bugs that other techniques and tools would not discover.
               </p>
               <p><img src={fuzz1} className='image center' alt='The result of your success' /></p>
               <p>
-                Many improvements have been made since the 90’s fuzzing, until the recent work on guided fuzzing, coverage guided mutation-based fuzzing, and other fancy names. What you should keep in mind at this stage is that we have tools that moved from random inputs to inputs that are generated and mutated depending on the application under test responses. There is a variety of clever way to do it, in automated ways, and selecting the most relevant inputs (also we now talk about security-focused fuzzer instead of just fuzzer, or mixing the robustness/quality tests with those fuzzing techniques and what they bring).
+                Many improvements have been made since the 90’s, including the recent work on guided fuzzing, coverage guided mutation-based fuzzing, and other fancy names. What you should keep in mind at this stage is that we have tools that moved from random inputs to inputs that are generated and mutated depending on the application under test responses. There is a variety of clever way to do it, in automated ways, and selecting the most relevant inputs. Also, we now talk about security-focused fuzzer instead of mixing the robustness/quality tests with those fuzzing techniques.
               </p>
               <p><img src={fuzz2} className='image center' alt='The result of your success' /></p>
               <p>
-                There are many tools, and some open source tools enable bundling together “fuzzers” targeting different development and build environment (C/C++, Java, Rust, GO, etc.). We are going to start with a tool called cifuzz, then Jazzer. But first, let’s familiarize with the core concepts of fuzzing. Start by reading the section “2.1 Fuzzing & Fuzz Testing”, and the few formal definitions in this academic article: <a href="https://koasas.kaist.ac.kr/bitstream/10203/289589/1/111726.pdf">https://koasas.kaist.ac.kr/bitstream/10203/289589/1/111726.pdf</a>
+                There are many tools, and some open source tools enable bundling together “fuzzers” targeting different development and build environment (C/C++, Java, Rust, GO, etc.). We are going to start with a tool called cifuzz, then usine another, Jazzer, and finally libFuzzer, a library for coverage-guided fuzz testing. But first, let’s gain som famiiliarity with the core concepts of fuzzing. Start by reading the section “2.1 Fuzzing & Fuzz Testing”, and the few formal definitions in this academic article: <a href="https://koasas.kaist.ac.kr/bitstream/10203/289589/1/111726.pdf">https://koasas.kaist.ac.kr/bitstream/10203/289589/1/111726.pdf</a>
               </p>
               <h3>The next document</h3>
               <p>
-                is written by John Neystadt from Microsoft, who wrote a great summary that should help you put it all together, and help you answer some of the future questions. You can skim through it quickly and come back to it later, even at the very end of the few examples we will go through.
+                is written by John Neystadt from Microsoft, who wrote a great summary that should help you put it all together, and help you answer some of the questions to come in this introduction to fuzzing in the DevOps - CI/CD context. You can go through it quickly and come back later, even at the very end of the few examples we will go through.
               </p>
               <p>
-                It is entitled Automated Penetration Testing with White-Box Fuzzing and should answer your remaining doubts about fuzzing as a must in DevSecOps arsenal: <a href="https://learn.microsoft.com/en-us/previous-versions/software-testing/cc162782(v=msdn.10)?redirectedfrom=MSDN">https://learn.microsoft.com/en-us/previous-versions/software-testing/cc162782(v=msdn.10)?redirectedfrom=MSDN</a>
+                It is entitled Automated Penetration Testing with White-Box Fuzzing and should answer your remaining doubts about fuzzing as a must-have in the DevSecOps arsenal: <a href="https://learn.microsoft.com/en-us/previous-versions/software-testing/cc162782(v=msdn.10)?redirectedfrom=MSDN">https://learn.microsoft.com/en-us/previous-versions/software-testing/cc162782(v=msdn.10)?redirectedfrom=MSDN</a>
               </p>
-              <h3>There are different techniques: write down what are the main categories of fuzzing.</h3>
+              <h3>There are different techniques: write down some you now understand as belonging to different categories.</h3>
               <ol>
                 <li>What can you infer about the possible different use cases of fuzzing in a development cycle, based on your current understanding of fuzzing?</li>
-                <li>What are the parameters to consider to define your target, in the codebase of the solution you are testing?</li>
+                <li>What are the parameters in your solution under development to consider to properly apply fuzz testing?</li>
               </ol>
-              <h3>Go to CI Fuzz CLI: <a href="https://docs.code-intelligence.com/cifuzz-cli">https://docs.code-intelligence.com/cifuzz-cli</a></h3>
+              <h3>Go to <a href="https://docs.code-intelligence.com/cifuzz-cli">https://docs.code-intelligence.com/cifuzz-cli</a></h3>
               <p>This project is built upon oss-fuzz, and aims at making it easier to integrate fuzzing in a DevOps pipeline. 
                 Focus on a Java build target, and follow this example provided in the main cifuzz repository, <a href="https://docs.code-intelligence.com/cli-quick-start-java">https://docs.code-intelligence.com/cli-quick-start-java</a></p>
               <ol>
                 <li>Clone the cifuzz repository, <a href="https://github.com/CodeIntelligenceTesting/cifuzz.git">https://github.com/CodeIntelligenceTesting/cifuzz.git</a>, on your VM. It will be useful to run one of its examples.</li>
-                <li>Install and build cifuzz on your VM, and for that you can just use this simple command (in the readme.md of the repository):<br/>
+                <li>Install and build cifuzz on your VM. To do that, you can use this simple command (in the readme.md of the repository):<br/>
                   <code>sh -c "$(curl -fsSL https://raw.githubusercontent.com/CodeIntelligenceTesting/cifuzz/main/install.sh)"</code>
                   <br/>Add, as instructed, the cifuzz/bin to your PATH environment variable.
                 </li>
-                <li>Then, go through the example locally (forget for now the pipeline), look at the fuzz target example (spoiler: not a real world test case, simplified, but still a good example).</li>
+                <li>Then, go through the example locally (forget for now the pipeline), look at the fuzz target example (spoiler: not a real world test case, simplified, but still a good example). Try to understand the vulnerability here, and wha tis its location in the code .</li>
                 <li>Check the output from the fuzz test:<br/>
                   <code>fuzz finding &lt;name_of_your_fuzz_test&gt;</code>
                 </li>
@@ -79,15 +79,15 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                   <code>cifuzz coverage &lt;name_of_your_fuzz_test&gt; --format=html</code>
                 </li>
                 <li>At last, try to understand and explain what "code coverage" means in the context of fuzzing and why is it valuable.</li>
-                <li>And by the way, cifuzz has an IDE integration, including Visual Code… which is obviously interesting to integrate in the development day to day work:<br/>
+                <li>And by the way, cifuzz has an IDE integration, including Visual Code… which is obviously interesting to integrate in a developer day to day work:<br/>
                   <code>cifuzz integrate cmake git vscode</code>
                   <br/>And read the output to get the information and check for the files created in the project / example repository. 
-                  Open it in Visual Code if not already and look at the bottom of your favorite code editor.
+                  Open it in Visual Code, if you did not already, and look at the bottom bar.
                 </li>
               </ol>
-              <h3>Now we are quickly going to explore another fuzzer</h3>
+              <h3>Now we are quickly going to explore another fuzzer, dedicated to Java and JVM targets.</h3>
               
-              <p>Actually the one that was leveraged by cifuzz which, as oss-fuzz, is a powerful framework that integrates several fuzzers in the backend, to have a similar process and adapt to different build and programs targets/development&rsquo;s environments.</p>
+              <p>Actually the one that was leveraged by cifuzz which, as oss-fuzz (Google open-sourced fuzzer framework, dedicated to help open-source projects), is a powerful framework that integrates several fuzzers in the backend, to have a similar process and adapt to different build and programs targets/development&rsquo;s environments.</p>
 
               <p>This fuzz engine is called Jazzer: <a href="https://github.com/CodeIntelligenceTesting/jazzer">https://github.com/CodeIntelligenceTesting/jazzer</a></p>
 
@@ -100,9 +100,9 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 com.mikesamuel:json-sanitizer:1.2.0 <br/>
                 com.google.json.JsonSanitizer::sanitize <br/>
                 --autofuzz_ignore=java.lang.ArrayIndexOutOfBoundsException</code>
-                              <p>The explanation is good to understand each part of this command, and the overall documentation as well if you wish to dive in.</p>
+                              <p>The explanation is already well written to understand each part of this command--and the overall documentation as well if you wish to go deeper.</p>
                               <p>The part that is interesting here for the DevSecOps context, is the Jazzer's Autofuzz mode.</p>
-                              <p>What it does is that it will build, in the Java&rsquo;s context that Jazzer covers, itself (auto…fuzz) fuzzing targets based on the codebase passed to it. Here, the example is a widely used Java library, json-sanitizer .</p>
+                              <p>What it does is that it will build by itself (auto…fuzz), in the Java&rsquo;s context that Jazzer covers, fuzzing targets based on the codebase passed to it. Here, the example is a widely used Java library, json-sanitizer .</p>
                               <p>Several vulnerabilities have been discovered thanks to the use of Jazzer… And if you check the current version, you can see that this fuzzing applies to a vulnerable version, not the last one.</p>
                           </li>
                       </ol>
@@ -114,8 +114,8 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 <ol>
                   <li>
                   <p>
-                    Following our (little) knowledge of cifuzz, we know a bit what a fuzz target or function target is.
-                    We now want to apply our knowledge and check the relevance of fuzzing.
+                    Following our (little) experience of cifuzz we have now, we know a bit what a fuzz target or function target is.
+                    We now want to apply our knowledge and check the relevance of fuzzing, but also what might be the challenges to integrate it in a DevOps cycle, and how could they be overcome (food for thought...).
                     So, we want a vulnerable application.
                     We choose OpenSSL: <a href="https://en.wikipedia.org/wiki/OpenSSL">https://en.wikipedia.org/wiki/OpenSSL</a>
                     We check at the vulnerabilities and find those recent ones: CVE-2022-3602 and CVE-2022-3786.
@@ -123,9 +123,9 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                     <p><img src={fuzz3} className='image center' alt='The result of your success' /></p>
                   </p>
                   <p>
-                    We want to check the git diff between the commits 3.0.6 and 3.0.7 to identify the patch, and consequently the vulnerabilities.
+                    We want to check the git difference between the commits 3.0.6 and 3.0.7 to identify the patch, and consequently the vulnerabilities.
                     <p><img src={fuzz4} className='image center' alt='The result of your success' /></p>
-                    It is obviously very interesting to us, as you can see tags include the versions…
+                    It is very interesting to us, as you can see tags include the versions…
                     So look for the version after the vulnerable one, 3.0.7:
                     <p><img src={fuzz5} className='image center' alt='The result of your success' /></p>
                   </p>
@@ -137,7 +137,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                   <li>
                 <p>
                   From there, let’s try to replicate the vulnerability discovery with a fuzzer (not through a CVE database, already known, but based on fuzzing instrumentation and techniques).
-                  I will be using as my fuzzer libFuzzer, because now I have to compile and run an application that was built with old tooling and build chains, so it will be a pain to integrate the other tools, like cifuzz and clusterfuzzlite (it does not mean it is not possible, it is longer and require a deeper understanding of the C/C++ development environment and build process—you are welcome to try).
+                  I will be using as my fuzzer the library libFuzzer, part of the LLVM project (<a href="https://en.wikipedia.org/wiki/LLVM">https://en.wikipedia.org/wiki/LLVM</a>), because now I have to compile and run an application that was built with old tooling and build chains, so it felt like a pain to integrate the other tools, like cifuzz or clusterfuzzlite (it does not mean it is not possible, it is longer and require a deeper understanding of the C/C++ development environment and build process—you are welcome to try).
                   We can see the patch, and the test case implemented. It leads us to the vulnerable function.
                 </p>
                 <code>git clone https://github.com/openssl/openssl</code>
@@ -149,9 +149,9 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 <code>cd ../crypto/punycode.c</code>
                 <p>ossl_punycode_decode() is the vulnerable function.</p>
                 <p>We can go back to the fuzz test cass in punycode_test.c</p>
-                <p>To reproduce vulnerabilities in openssl, they make it easy, use Configure command and parameter is the path with a new folder we'll call build. When we'll do make install it will install all the built files inside this folder. It's great to have multiple version of a software at different locations -- and so great for us to replicate tests on a vulnerable software version:</p>
+                <p>To reproduce vulnerabilities in openssl, they make it easy, use the ./Configure command and the parameter as the path, with a new folder we'll call "build". When we'll do make install it will install all the built files inside this folder. It's great to have multiple version of a software at different locations--and consequently, great for us to replicate tests on a vulnerable software version:</p>
                 <code>./Configure --prefix=/home/advancedtoolsadmin/tmp_fuzz_test/openssl/build</code>
-                <p>Then we'll set CFLAGS to define with the debugger gdb where to stop in the code--truth is I stumbled upon an error, googled my to this and it worked and I still don't know exactly how to use it with my gdb. But it would be great to observe the finding of our fuzzer, so let's keep it in mind.</p>
+                <p>Then we'll set CFLAGS to define with the debugger gdb where to stop in the code--truth is I stumbled upon an error, googled my way to this and it worked and I still don't know exactly how to use it with my gdb. But it would be great to observe the finding of our fuzzer, so let's keep it in mind, even if we will not use it in our example.</p>
                 <code>export CFLAGS="-ggdb -O0 -fsanitize=address,undefined"</code><br/>
                 <code>make && make install</code>
                 <p>It will take some time. You can check this as you wait for it to finish:</p>
@@ -178,7 +178,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 <code>./punycode_test -test 2</code><br/>
                 <p>Looks like we get nothing, and indeed the vulnerability is not present over here.</p>
                 <code>./punycode_test -test 3</code><br/>
-                <p>Same thing. Kind of expected. We are in the 3.0.7 version where the vulnerability was fixed (you can go through the github diff to observe in more detail the fix and so understand better the vulnerability).</p>
+                <p>Same thing. Kind of expected. We are in the 3.0.7 version where the vulnerability was fixed (you can go through the github differences to observe in more detail the fix and so understand better the vulnerability).</p>
                 <p>Now we're going to try it on the vulnerable function, found in 3.0.6. We will do a git clone as we did before, in a different folder so we don't get conficts or other weird entanglement in our results: </p>
                 <code>git clone https://github.com/openssl/openssl openssl_vulnerable</code><br/>
                 <p>Then we copy the test case from 3.0.7 to our vulnerable version (once we checkout to 3.0.6).</p>
@@ -226,8 +226,8 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 gdb test/punycode_test<br/>
                 run -test<br/></code>
                 <p>You can see where the seg fault happens (what is the function called). And it is 0x0000555555605bbf in ossl_a2ulabel () (likely you won't have the same memory address here)</p>
-                <p>Now you could debug, understand the vulnerability and work on a fix / patch. If you know your way with gdb (or a variant), it is a great way to get to know better the vulnerabilities and how to fix them.</p>
-                <p>Now let's build a fuzz target on the vulnerable code, taking the easiest way, calling our vulnerable function (check again cifuzz documentation and clusterfuzzlite docs if in doubt):
+                <p>Now you could debug, understand the vulnerability and work on a fix / patch. If you know your way with gdb (or a variant), it is a great way to get to know better the vulnerabilities at a low-level, and how to fix them.</p>
+                <p>Now let's build a fuzz target on the vulnerable code, taking the easiest path, calling our vulnerable function (check again cifuzz documentation if in doubt):
                 <SyntaxHighlighter language="c">
                   {code_1}
                 </SyntaxHighlighter></p>
@@ -247,7 +247,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 </li>
               </ol>
               <h3>You now have seen most of the main components of fuzzing.</h3>
-              <p>We will touch on the subject of sanitizers to conclude, even if you already went through it.</p>
+              <p>We will touch upon the topic of sanitizers to conclude, even if you already went through it.</p>
               <ol type="1">
                 <li>Example of sanitizers in a C/C++ development environment, some that you actually already used in the previous tools are:
                   <ul>
@@ -258,12 +258,12 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                 </li>
                 <li>You can read about them, but just know that they are powerful heuristics to discover specific categories / types of bugs and vulnerabilities. They are basically hooks added to your code, or the libraries linked to your code mostly, as in AddressSanitizer example.
                   <ul>
-                    <li>AddressSanitizer is built around the malloc and free functions (responsible for most memory allocations) in the c library, and enable to detect when those functions are called if a call or an assigned portion in memory is in in or out of the logic applied by your code, or if it falls in an edge case that you might have no idea about (basically look up for buffer overflows, stack overflows, use after free, memory leaks, etc.).</li>
+                    <li>AddressSanitizer is built around the malloc and free functions (responsible for most memory allocations) in the standard c library, and enable to detect when those functions are called if a call or an assigned portion in memory is in in or out of the logic applied by your code, or if it falls in an edge case that you might have no idea about (basically look up for buffer overflows, stack overflows, use after free, memory leaks, etc.).</li>
                   </ul>
                 </li>
               </ol>
               <h3>A last important part that brings fuzzing to CI/CD pipelines</h3>
-              <p>is the notion of continuous fuzzing (that builds on the previous notions we explored, especially guide-coverage fuzzing) is continuous fuzzing.</p>
+              <p>is the notion of continuous fuzzing (that builds on the previous notions we explored, especially guide-coverage fuzzing).</p>
               <p>Make a search with your favorite search engine and have a look to understand the implications.</p>
               <h5>Finally, what distinguish a fuzzer from SonarQube or tryvy in their output, and their role in a DevSecOps pipelines? How do they complement each others?</h5>
                 <ul>
@@ -275,7 +275,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
                   <li>What do you think it add in terms of complexity in a developers’ team?</li>
                   <li>What are your thoughts about it? Is it worth it? How to actually have developers using it?</li>
                 </ul>
-                <h5>An important step to be efficient in applying fuzzing principles to your environments is to have a rough idea of the good use cases to take as fuzzing targets (although as always, to limit yourself to this list, the mindset is more important here—not all code is equal, and worth spending time over):</h5>
+                <h5>An important step to be efficient in applying fuzzing principles to your environments is to have a rough idea of the good use cases to take as fuzzing targets (although as always, do not limit yourself to this list, the mindset is more important here—not all code is equal, and worth spending time over):</h5>
                 <p><img src={fuzz8} className='image center' alt='The result of your success' /></p>
                 <ul>
                   <li>How relevant is a fuzzer integrated tool in the vulnerability discovery step, of the overall vulnerability management process? Again, think of the other tools linked to known CVE databases.</li>
