@@ -1,6 +1,7 @@
 import React from "react";
 import StepBase from './StepBase';
-
+import ReactDOMServer from 'react-dom/server';
+import NameBase from './NameBase';
 import CompleteCheck from './CompleteCheck';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import image1_0 from './images/bootcamp1.0.png';
@@ -30,6 +31,7 @@ class Step1 extends StepBase {
   }
 
   render() {
+    const name_lower = ReactDOMServer.renderToString(<NameBase />).toLowerCase();
     const command_line_1 = `ssh-keygen -t rsa -b 4096 -C "your.email@cgi.com"`;
     const command_line_2 = `Enter file in which to save the key (/c/Users/your.name/.ssh/id_rsa):`
     const command_line_3 = `Enter passphrase (empty for no passphrase):
@@ -258,7 +260,11 @@ Enter same passphrase again:`
                       </p>
                       <p>
                         <span className='name-item-list'>I</span>
-                          On the Bastion page, Click on Connection Settings. Choose the RDP protocol, it will make you able to access the GUI on the Linux VM.  Connect using the Password authentication Type, Enter your name as the username and the Password is Bootc@mper2023.
+                          On the Bastion page, Click on Connection Settings. Choose the RDP protocol, it will make you able to access the GUI on the Linux VM. Connect using the Password Authentication Type.
+                          <ul>
+                            <li>Username: {name_lower}</li>
+                            <li>Password: Bootc@mper2023</li>
+                          </ul>
                       </p>
                       <p><img src={azure_4} className='image center' alt='Installation of Git for Windows' /></p>
                       <p>
@@ -276,7 +282,7 @@ Enter same passphrase again:`
               </section>
             </div>
           </div>
-          <CompleteCheck step="step1" />
+          <CompleteCheck step="step1" redirectUrl="/step2"/>
         </div>
       </div>
     );

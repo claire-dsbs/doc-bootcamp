@@ -20,7 +20,7 @@ class DAST extends StepBase {
                 <li><strong>Task:</strong> Create a new declarative pipeline that integrates OWASP ZAP. When running this pipeline, we should be able to generate and view reports based on the results.
                   <ol>
                     <li>Create a new job for ZAP, but this time, instead of Maven project, select Pipeline instead.</li>
-                    <li>Write a declarative pipeline that lets you start a ZAP scan. Hint: Use this article to guide you. <a href="https://medium.com/globant/owasp-zap-integration-with-jenkins-f2c01678027f">OWASP ZAP integration with Jenkins</a> Note: Don’t try to copy/paste this code. You might have to make some changes in order to make the code work.</li>
+                    <li>Write a declarative pipeline that lets you start a ZAP scan. Hint: Use this article to guide you. <a href="https://medium.com/globant/owasp-zap-integration-with-jenkins-795d65991404">OWASP ZAP integration with Jenkins</a> Note: Don’t try to copy/paste this code. You might have to make some changes in order to make the code work.</li>
                   </ol>
                 </li>
                 <li><strong>Food for thought:</strong> Take a look at the report generated. (It should be in your build’s workspace.) What are some of the vulnerabilities you see? Are they different from the vulnerabilities found by SonarQube?</li>
@@ -30,7 +30,7 @@ class DAST extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="dast" />
+          <CompleteCheck step="dast" redirectUrl="/pipelinesecurity"/>
         </div>
       </div>
     );

@@ -24,7 +24,7 @@ class DetectSecrets extends StepBase {
                 <p>How does applying pre-commit hooks which scan for secrets relate to Shift-Left Methodology? Why is it not recommended to commit any sort of secrets in a SCM like Git (even if they are for a Dev environment)?</p>
                 <h4>Catch Secrets using detect-secrets Pre-Commit Hook</h4>
                 <ol>
-                  <li>Install pre-commit on your local system (you can use the terminal inside VS Code).
+                  <li>Install pre-commit on your local system (you can use the terminal inside VS Code). See Code Formatting section if unsure how.
                     <ul>
                       <li>This will require the installation of Go: <a href="https://golang.org/dl/">Download and install - The Go Programming Language</a></li>
                     </ul>
@@ -44,7 +44,7 @@ class DetectSecrets extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="detectsecrets" />
+          <CompleteCheck step="detectsecrets" redirectUrl="/trivy"/>
         </div>
       </div>
     );

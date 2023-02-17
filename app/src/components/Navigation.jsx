@@ -91,15 +91,15 @@ class Navigation extends React.Component {
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className={`nav-link ${this.state !== undefined && this.state.detectsecrets ? "finished" : ""}`} to="/detectsecrets" name="detectsecrets">
-                    Detect-Secrets
-                    {this.isDone("detectsecrets")}
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.codeformatting ? "finished" : ""}`} to="/codeformatting" name="codeformatting">
+                    Code Formatting
+                    {this.isDone("codeformatting")}
                   </NavLink>
                 </li>
                 <li className="nav-item">
-                  <NavLink className={`nav-link ${this.state !== undefined && this.state.codeformatting ? "finished" : ""}`} to="/codeformatting" name="codeformatting">
-                    Linting
-                    {this.isDone("codeformatting")}
+                  <NavLink className={`nav-link ${this.state !== undefined && this.state.detectsecrets ? "finished" : ""}`} to="/detectsecrets" name="detectsecrets">
+                    Detect-Secrets
+                    {this.isDone("detectsecrets")}
                   </NavLink>
                 </li>
                 <li className="nav-item">

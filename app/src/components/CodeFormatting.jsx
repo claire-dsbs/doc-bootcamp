@@ -18,8 +18,9 @@ class CodeFormatting extends StepBase {
               <h3>Task: Use pre-commit hooks to format the app’s code and apply stylistic standards.</h3>
               <ol>
                 <li>
-                  If it isn’t already done, install <a href="https://pre-commit.com/">pre-commit</a> on your local system. Make sure you have the most recent Python version installed from the Python website. (<a href="https://www.python.org/downloads/">Download Python</a>)
+                  Install <a href="https://pre-commit.com/">pre-commit</a> on your local system. Make sure you have the most recent Python version installed from the Python website. (<a href="https://www.python.org/downloads/">Download Python</a>)
                 </li>
+                <li>This might require the installation of Go: <a href="https://golang.org/dl/">Download and install - The Go Programming Language</a></li>
                 <li>Create a new file named .pre-commit-config.yaml.</li>
                 <li>On the pre-commit website, look for a hook called clang-format. Add it to your configuration file.</li>
                 <li>Install the hook.</li>
@@ -33,7 +34,7 @@ class CodeFormatting extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="codeformatting" />
+          <CompleteCheck step="codeformatting" redirectUrl="/detectsecrets"/>
         </div>
       </div>
     );

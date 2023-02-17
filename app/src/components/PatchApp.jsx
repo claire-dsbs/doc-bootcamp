@@ -26,7 +26,7 @@ class PatchApp extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="patchapp" />
+          <CompleteCheck step="patchapp" redirectUrl="/"/>
         </div>
       </div>
     );

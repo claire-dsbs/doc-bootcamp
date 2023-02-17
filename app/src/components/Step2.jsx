@@ -37,7 +37,7 @@ class Step2 extends StepBase {
                       From a browser (Firefox), access the Jenkins UI: <b>http://10.19.0.5:8080</b>
                     </li>
                     <li>
-                      Log in to Jenkins using your credentials.
+                      Log in to Jenkins using your credentials (same as you used to login to the VM).
                     </li>
                   </ol>
                 </p>
@@ -87,7 +87,7 @@ class Step2 extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="step2" />
+          <CompleteCheck step="step2" redirectUrl="/step3"/>
         </div>
       </div>
     );

@@ -27,7 +27,7 @@ class PrometheusGrafana extends StepBase {
                 <h4>A Prometheus instance has already been setup for you and has been configured to collect information about containers. You can visualize it here (through your Lab VM):</h4>
                 <p><a href="http://10.19.0.7:9090/targets">http://10.19.0.7:9090/targets</a></p>
 
-                <h4>You should see your VM IP with the state DOWN in the list. Here’s an example of working and non-working VMs:
+                <h4>You should see your VM IP with the state DOWN/UNKNOWN in the list. Here’s an example of working and non-working VMs:
                   <p><img src={prom1} className='image center' alt='The result of your success' /></p>
                 </h4>
 
@@ -49,7 +49,7 @@ class PrometheusGrafana extends StepBase {
                 <h4>Create a new dashboard and a new panel (use your name to name them).</h4>
 
                 <h4>Task:</h4>
-                <p>In the panel, add a query that will get information about STOPPED or RUNNING containers on YOUR VM (hint: instance should equal to <Ip type="Vm" />:9329)</p>
+                <p>In the panel, add a query that will get information about STOPPED or RUNNING containers on YOUR VM (hint: instance should equal to <Ip type="Vm" />:9323)</p>
 
                 <h4>Visualize the graph and make sure the information makes sense
                   <p><img src={prom2} className='image center' alt='The result of your success' /></p>
@@ -58,7 +58,7 @@ class PrometheusGrafana extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="prometheusgrafana" />
+          <CompleteCheck step="prometheusgrafana" redirectUrl="/artifactory"/>
         </div>
       </div>
     );
