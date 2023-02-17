@@ -100,17 +100,17 @@ COPY --from=<scanstep> <outputfile> .`
                   </ul></p>
                   <p>There is a token preconfigured in Jenkins for DefectDojo, you can use in as a variable and reuse it in the API Request.</p>
                   <ol type="i">
-                    <li>You have to create a new engagement for the product <b>Bootcamp2023</b> where you will send your new tests</li>
-                    <li>Format your Trivy scan results to Json and send them to your engagement (i.e. <b>{name_lower}</b>) in DefectDojo. You can find the token for the API in Jenkins credentials vault (it should be WILL_BE_PROVIDED_LATER).
+                    <li>Format your Trivy scan results to JSON and send them to your engagement (i.e. <b>{name_lower}</b>) in DefectDojo. You can find the token for the API in Jenkins credentials vault (it should be WILL_BE_PROVIDED_LATER).
                       <ol type="1">
                         <li>How do you integrate this variable to your job/pipeline?
                           <p>HINT: Check Step 6.4</p>
                         </li>
-                        <li>Where and how would you run the API Call to DefectDojo (Jenkins job or directly on your VM)? WARNING: The Ansible version used in this bootcamp will not permit you to make your call with the url module. If you integrate your API calls in your Ansible playbook, you'll have to do it using curl in a shell module.
+                        <li>Where and how would you run the API Call to DefectDojo (Jenkins shell, your VM shell or Jenkins Ansible)? WARNING: The Ansible version used in this bootcamp will not permit you to make your call with the uri module. If you integrate your API calls in your Ansible playbook, you'll have to do it using curl in a shell module.
                           <p>HINT: Here's an example template of the request you would have to use:<br/>
                           <SyntaxHighlighter language="bash">
                             {code_4}
                           </SyntaxHighlighter></p>
+                          <p>Engagements in DefectDojo have already been created for you following the standard being: <b>your first name in all lowercase</b>. Make sure to use this as the engagement_name in the API request.</p>
                         </li>
                         <li>See your result in DefectDojo</li>
                       </ol>
