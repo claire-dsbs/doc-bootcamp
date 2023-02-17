@@ -220,7 +220,7 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
               </section>
             </div>
           </div>
-          <CompleteCheck step="step7" />
+          <CompleteCheck step="step7" redirectUrl="/advancedchallenges"/>
         </div>
       </div>
     );

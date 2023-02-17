@@ -257,7 +257,7 @@ docker rm name_of_container`;
               </section>
             </div>
           </div>
-          <CompleteCheck step="step5" />
+          <CompleteCheck step="step5" redirectUrl="/step6"/>
         </div>
       </div>
     );

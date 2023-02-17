@@ -25,7 +25,7 @@ class Pipeline extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="pipeline" />
+          <CompleteCheck step="pipeline" redirectUrl="/patchapp"/>
         </div>
       </div>
     );

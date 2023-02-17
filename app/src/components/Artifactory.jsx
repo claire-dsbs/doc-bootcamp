@@ -36,7 +36,7 @@ class Artifactory extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="artifactory" />
+          <CompleteCheck step="artifactory" redirectUrl="/pipeline"/>
         </div>
       </div>
     );

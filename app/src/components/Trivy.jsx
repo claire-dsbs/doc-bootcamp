@@ -2,6 +2,8 @@ import React from "react";
 import StepBase from './StepBase';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import CompleteCheck from './CompleteCheck';
+import NameBase from './NameBase';
+import ReactDOMServer from 'react-dom/server';
 
 class Trivy extends StepBase {
   constructor(props) {
@@ -9,6 +11,7 @@ class Trivy extends StepBase {
   }
 
   render() {
+    const name_lower = ReactDOMServer.renderToString(<NameBase />).toLowerCase();
     const code_1 = `sudo apt-get install wget apt-transport-https gnupg lsb-release -y;
 wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -;
 trivy_repo="deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main";
@@ -18,6 +21,18 @@ sudo apt-get install -y trivy;`
     const code_2 = `FROM scratch AS exportscan
 COPY --from=<scanstep> <outputfile> .`
     const code_3 = `curl -X POST '<URL DEFECDOJO>/api/v2/import-scan/' -H 'accept: application/json' -H 'Content-Type: multipart/form-data' -H 'Authorization: Token <TOKENDD>' -F 'minimum_severity=<MIN SEVERITY WANTED>' -F 'active=true' -F 'verified=true' -F 'scan_type=Trivy Scan' -F 'close_old_findings=false' -F 'push_to_jira=false' -F 'file=@<PATH TO THE JSON REPORT FILE>report.json' -F 'engagement_name=<YOUR DEFECTDOJO ENGAGEMENT>' -F 'product_name=<PRODUCT NAME DD> ' -F 'test_title=<YOUR DD TEST NAME>'`
+    const code_4 = `curl -X POST "http://10.19.0.7:8080/api/v2/import-scan/" \\
+-H "accept: application/json" \\
+-H "Content-Type: multipart/form-data" \\
+-H "Authorization: Token <WILL_BE_PROVIDED_LATER>" \\
+-F "minimum_severity=Info" \\
+-F "active=true" \\
+-F "verified=true" \\
+-F "scan_type=Trivy Scan" \\
+-F "file=@<PATH_TO_REPORT_FILE_ON_YOUR_VM>" \\
+-F "product_name=Bootcamp2023" \\
+-F "engagement_name=`+name_lower+`" \\
+-F "test_title=`+name_lower+`_scan"`
     return (
       <div className="page">
         <div className="container">
@@ -32,17 +47,18 @@ COPY --from=<scanstep> <outputfile> .`
                 <li>You already did this exercise during the bootcamp, you'll find the Dockerfile needed to deploy your local container with the right parameters in your newly forked repository. Docker will search for the jar file in the local directory.</li>
                 <li>Once deployed, you can access WebGoat on the URL: <a href="http://localhost:8080/WebGoat">http://localhost:8080/WebGoat</a> (to verify the deployment is successful).</li>
                 <li>You can create a user and look around to see what kind of vulnerabilities remains if you feel like it (or ... you can still have the surprise later!).</li>
+                <li>NOTE: If you have a failed Jenkins job due to permission issues (can't access directory), you can use chmod command to change the permissions of the directory. See <a href="https://linuxhandbook.com/chmod-command/">here</a> for examples of chmod commands.</li>
               </ol>
               <h3>Integrate Trivy in your job/pipeline</h3>
               <p>Trivy is a vulnerability scanner by Aquasecurity. You can find the documentation <a href="https://aquasecurity.github.io/trivy/v0.36/">here</a>.</p>
               <p>In this exercise, we will focus on 3 of its potential targets: git repository, container image and filesystem (you can see all in the doc). Trivy has 3 modes available (scanner):</p>
               <ul>
-                <li>-vuln: will search for known vulnerabilities on code dependencies and OS packages</li>
-                <li>-config: will search for misconfigurations</li>
-                <li>-secret: will search for sensitive information and secrets</li>
+                <li>vuln: will search for known vulnerabilities on code dependencies and OS packages</li>
+                <li>config: will search for misconfigurations</li>
+                <li>secret: will search for sensitive information and secrets</li>
               </ul>
               <p>Use of Trivy:<br/>
-                Trivy &lt;target&gt; [--security-checks &lt;scanner1,scanner2,scanner3&gt;] &lt;subject&gt;</p>
+                trivy &lt;target&gt; [--security-checks &lt;scanner1,scanner2,scanner3&gt;] &lt;subject&gt;</p>
               <p>Options that can be useful:</p>
               <ul>
                 <li>-o &lt;file&gt; (to redirect the output to a file)</li>
@@ -70,25 +86,30 @@ COPY --from=<scanstep> <outputfile> .`
                       <SyntaxHighlighter language="bash">
                         {code_2}
                       </SyntaxHighlighter></p>
-                      <p>HINT 2: don't forget you can use stages in docker files</p>
+                      <p>HINT 2: Don't forget you can use stages in docker files</p>
                     </li>
                   </ol>
                 </li>
                 <li>
                   Bonus 2: Redirect your scan results to DefectDojo
+                  <p><a href="https://www.defectdojo.org/">DefectDojo | CI/CD and DevSecOps Automation</a></p>
+                  <p>You can find our instance of DefectDojo here: <a href="http://10.19.0.7:8080">http://10.19.0.7:8080</a></p>
+                  <p><ul>
+                    <li>Username: bootcamper</li>
+                    <li>Password: Bootc@mper2023</li>
+                  </ul></p>
+                  <p>There is a token preconfigured in Jenkins for DefectDojo, you can use in as a variable and reuse it in the API Request.</p>
                   <ol type="i">
-                    <li>You have to create a new engagement for the product &lt;PRODUCT NAME DD&gt; where you will send your new tests</li>
-                    <li>Format your trivy scan results to json and send them to your engagement in DefectDojo. You can find the token for the API in Jenkins credentials vault (TOKENDD variable).
+                    <li>You have to create a new engagement for the product <b>Bootcamp2023</b> where you will send your new tests</li>
+                    <li>Format your Trivy scan results to Json and send them to your engagement (i.e. <b>{name_lower}</b>) in DefectDojo. You can find the token for the API in Jenkins credentials vault (it should be WILL_BE_PROVIDED_LATER).
                       <ol type="1">
-                        <li>How do you integrate this variable to your job/pipeline?</li>
-                        <li>Where in your code do you make the API calls? warning: the Ansible version used in this bootcamp will not permit you to make your call with the url module (well for this API because of the content-type of the request). If you integrate your API calls in your Ansible playbook, you'll have to do it with curl in shell command.
-                          <p>HINT 1: you have to use this API endpoint to import your scan results:<br/>
-                            <strong>api/v2/import-scan/<br/>
-                            method: POST<br/>
-                            Content-Type: multipart/form-data</strong></p>
-                          <p>HINT 2: Here a template of the request you have to use:<br/>
+                        <li>How do you integrate this variable to your job/pipeline?
+                          <p>HINT: Check Step 6.4</p>
+                        </li>
+                        <li>Where and how would you run the API Call to DefectDojo (Jenkins job or directly on your VM)? WARNING: The Ansible version used in this bootcamp will not permit you to make your call with the url module. If you integrate your API calls in your Ansible playbook, you'll have to do it using curl in a shell module.
+                          <p>HINT: Here's an example template of the request you would have to use:<br/>
                           <SyntaxHighlighter language="bash">
-                            {code_3}
+                            {code_4}
                           </SyntaxHighlighter></p>
                         </li>
                         <li>See your result in DefectDojo</li>
@@ -99,8 +120,8 @@ COPY --from=<scanstep> <outputfile> .`
               </ol>
               <h3>Fix vulnerabilities, secrets and misconfigurations (if any) detected by Trivy</h3>
               <ol>
-                <li>How would you fix what trivy detected? (misconfigurations and secrets will be easy, but vuln may be difficult knowing that the purpose of WebGoat is to be vulnerable, you can correct some if you want but others corrections may break the dependencies of the application.) The objective here is to elaborate a remediation plan.
-                  <br/><br/><i>HINT: The report give you the CVE associated with the vulnerability detected, if not directly the answer, time to do some reading.</i>
+                <li>How would you fix what Trivy detected? (misconfigurations and secrets will be easy, but vuln may be difficult knowing that the purpose of WebGoat is to be vulnerable, you can correct some if you want but others corrections may break the dependencies of the application.) The objective here is to elaborate a remediation plan.
+                  <br/><br/><i>HINT: The report gives you the CVE associated with the vulnerability detected. If it doesn't give it you the answer directly, you can find it through some digging.</i>
                 </li>
               </ol>
               <h3>Questions:</h3>
@@ -111,7 +132,7 @@ COPY --from=<scanstep> <outputfile> .`
               </section>
             </div>
           </div>
-          <CompleteCheck step="trivy" />
+          <CompleteCheck step="trivy" redirectUrl="/dast"/>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React from "react";
 import StepBase from './StepBase';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 import CompleteCheck from './CompleteCheck';
-import fuzz1 from './images/fuzz1.png'
+import fuzz1 from './images/fuzz1.PNG'
 import fuzz2 from './images/fuzz2.png'
 import fuzz3 from './images/fuzz3.png'
 import fuzz4 from './images/fuzz4.png'
@@ -284,7 +284,7 @@ int LLVMFuzzerTestOneInput(const uint8_t *data,size_t size) {
               </section>
             </div>
           </div>
-          <CompleteCheck step="fuzzing" />
+          <CompleteCheck step="fuzzing" redirectUrl="/prometheusgrafana"/>
         </div>
       </div>
     );

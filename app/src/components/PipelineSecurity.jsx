@@ -51,14 +51,14 @@ class PipelineSecurity extends StepBase {
                 <p><img src={ps4} className='image center' alt='Output after the build' /></p>
                 <p>Here there are no vulnerabilities discovered in the pipeline, but obviously in some instances you could introduce vulnerabilities in your DevOps / CI/CD.
                 This tool is there to make sure the changes to your CI/CD pipeline are not introducing vulnerable components.</p>
-                <h4>Try to integrate it with DefectDojo, by formatting the output and pushing it through a POST request.</h4>
+                <h4>Try to integrate it with DefectDojo, by formatting the output and pushing it through a POST request. If you haven't done the Trivy part yet, we recommend completing it first.</h4>
                 <h4>If you want to have a good idea of the power of this tool, check its targeted queries, allowing a more targeted scan:</h4>
                 <a href="https://docs.kics.io/latest/queries/">https://docs.kics.io/latest/queries/</a><br/>and<br/>
                 <a href="https://docs.kics.io/latest/queries/all-queries/">https://docs.kics.io/latest/queries/all-queries/</a>
               </section>
             </div>
           </div>
-          <CompleteCheck step="pipelinesecurity" />
+          <CompleteCheck step="pipelinesecurity" redirectUrl="/fuzzing"/>
         </div>
       </div>
     );

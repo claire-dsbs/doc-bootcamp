@@ -209,7 +209,7 @@ COPY ./webapp.war /usr/local/tomcat/webapps`;
               </section>
             </div>
           </div>
-          <CompleteCheck step="step6" />
+          <CompleteCheck step="step6" redirectUrl="/step7"/>
         </div>
       </div>
     );

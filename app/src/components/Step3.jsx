@@ -81,7 +81,7 @@ class Step3 extends StepBase {
               </section>
             </div>
           </div>
-          <CompleteCheck step="step3" />
+          <CompleteCheck step="step3" redirectUrl="/step4"/>
         </div>
       </div>
     );
