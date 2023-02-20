@@ -24,7 +24,7 @@ COPY --from=<scanstep> <outputfile> .`
     const code_4 = `curl -X POST "http://10.19.0.7:8080/api/v2/import-scan/" \\
 -H "accept: application/json" \\
 -H "Content-Type: multipart/form-data" \\
--H "Authorization: Token <WILL_BE_PROVIDED_LATER>" \\
+-H "Authorization: Token 117d0c1d1fbc70d4e10ddd323b44346971b3d2bc" \\
 -F "minimum_severity=Info" \\
 -F "active=true" \\
 -F "verified=true" \\
@@ -100,7 +100,7 @@ COPY --from=<scanstep> <outputfile> .`
                   </ul></p>
                   <p>There is a token preconfigured in Jenkins for DefectDojo, you can use in as a variable and reuse it in the API Request.</p>
                   <ol type="i">
-                    <li>Format your Trivy scan results to JSON and send them to your engagement (i.e. <b>{name_lower}</b>) in DefectDojo. You can find the token for the API in Jenkins credentials vault (it should be WILL_BE_PROVIDED_LATER).
+                    <li>Format your Trivy scan results to JSON and send them to your engagement (i.e. <b>{name_lower}</b>) in DefectDojo. You can find the token for the API in Jenkins credentials vault (it should be <b>Token 117d0c1d1fbc70d4e10ddd323b44346971b3d2bc</b>).
                       <ol type="1">
                         <li>How do you integrate this variable to your job/pipeline?
                           <p>HINT: Check Step 6.4</p>
