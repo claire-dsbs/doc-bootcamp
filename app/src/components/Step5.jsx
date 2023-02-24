@@ -47,7 +47,7 @@ cd webapp
 ls`;
     const command_line_10 = `sshpass -p "\${USER_PW}" scp -o "StrictHostKeyChecking=no" \${USER_ID}@10.19.0.5:/var/lib/jenkins/workspace/` + name + `-Deploy-on-Container/webapp/target/webapp.war /home/bootcamper;
 cd /home/bootcamper
-docker build -t simple_devops-image .
+docker build -t simple-devops-image .
 docker run -d --name simple-devops-container -p 8081:8080 simple-devops-image`;
     const command_line_11 = `docker stop name_of_container
 docker rm name_of_container`;
