@@ -148,7 +148,7 @@ sonar.dependencyCheck.jsonReportPath=target/dependency-check-report.json`;
                     <li>Select locally
                     <p><img src={sonar_locally} className='image center' alt='Sonar interface' /></p>
                     </li>
-                    <li>Select use existing token and input the following: -&gt; sqa_c77abdf91b247768224b17ce227fe6090fecf8e9</li>
+                    <li>Select use existing token and input the following: -&gt; squ_5b5cf18a05e5aa3be9370ee5552924b8bf0c5b90</li>
                   </ol>
               </section>
               <section>
